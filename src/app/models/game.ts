@@ -1,17 +1,15 @@
 import 'phaser';
-import { FirstLevel } from '../scenes/FirstLevel';
-import { GameManager } from '../scenes/GameManager';
-import { HUD } from '../scenes/HUD';
-import { Preloader } from '../scenes/Preloader';
-import { SecondLevel } from '../scenes/SecondLevel';
+import { Preload } from '../scenes/preload';
+import { HospitalScene } from '../scenes/hospital';
+import { PlayerData } from './player-data';
 
 export class Game extends Phaser.Game {
   constructor() {
     const config: Phaser.Types.Core.GameConfig = {
       type: Phaser.AUTO,
       parent: 'game-container',
-      width: 400,
-      height: 250,
+      width: 800,
+      height: 600,
       zoom: 2.5,
       pixelArt: true,
       physics: {
@@ -24,7 +22,17 @@ export class Game extends Phaser.Game {
         keyboard: true,
       },
       disableContextMenu: true,
-      scene: [Preloader, FirstLevel, SecondLevel, GameManager, HUD],
+      scene: [Preload, HospitalScene],
+      plugins: {
+        global: [
+          {
+            key: 'Player',
+            plugin: PlayerData,
+            start: false,
+            mapping: 'player',
+          },
+        ],
+      },
     };
     super(config);
   }

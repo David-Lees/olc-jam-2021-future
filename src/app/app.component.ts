@@ -9,8 +9,8 @@ import { Game } from './models/game';
 export class AppComponent {
   title = 'CodeJam2021';
   game: Game | undefined;
-  
-  start () {
+
+  start() {
     this.game = new Game();
   }
 }

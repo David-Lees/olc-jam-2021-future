@@ -1,0 +1,63 @@
+{
+    "activeFile": "tilesets/Hospital.tmx",
+    "expandedProjectPaths": [
+        "tilesets"
+    ],
+    "fileStates": {
+        "tilesets/Hospital.json": {
+            "scale": 0.21137499999999998,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 804.2578356002366,
+                "y": 482.55470136014196
+            }
+        },
+        "tilesets/Hospital.json#Modern Interior Room Builder": {
+            "scaleInDock": 1
+        },
+        "tilesets/Hospital.json#Modern Interiors": {
+            "scaleInDock": 1
+        },
+        "tilesets/Hospital.json#Serene_Village_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/Hospital.tmx": {
+            "scale": 0.21137499999999998,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 804.2578356002366,
+                "y": 482.55470136014196
+            }
+        },
+        "tilesets/Hospital.tmx#Modern Interior Room Builder": {
+            "scaleInDock": 1
+        },
+        "tilesets/Hospital.tmx#Modern Interiors": {
+            "scaleInDock": 1
+        },
+        "tilesets/Hospital.tmx#Serene_Village_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/Modern Interior Room Builder.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "tilesets/Modern Interiors.tsx": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        }
+    },
+    "openFiles": [
+        "tilesets/Hospital.json",
+        "tilesets/Modern Interiors.tsx",
+        "tilesets/Modern Interior Room Builder.tsx",
+        "tilesets/Hospital.tmx"
+    ],
+    "project": "olc-jam-2021.tiled-project",
+    "recentFiles": [
+        "tilesets/Hospital.json",
+        "tilesets/Modern Interiors.tsx",
+        "tilesets/Modern Interior Room Builder.tsx",
+        "tilesets/Hospital.tmx"
+    ]
+}
