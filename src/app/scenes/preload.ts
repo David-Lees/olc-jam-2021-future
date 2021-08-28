@@ -20,14 +20,101 @@ export class Preload extends Phaser.Scene {
 
   private loadAssets() {
     // Images
-    this.load.image('Modern Interiors', 'assets/tilesets/interiors_32x32.png');
     this.load.image(
-      'Serene_Village_32x32',
+      '1_Generic_32x32',
+      'assets/tilesets/1_Generic_32x32.png'
+    );
+    this.load.image(
+      '2_LivingRoom_32x32',
+      'assets/tilesets/2_LivingRoom_32x32.png'
+    );
+    this.load.image(
+      '3_Bathroom_32x32',
+      'assets/tilesets/3_Bathroom_32x32.png'
+    );
+    this.load.image(
+      '4_Bedroom_32x32',
+      'assets/tilesets/4_Bedroom_32x32.png'
+    );
+    this.load.image(
+      '5_Classroom_and_library_32x32',
+      'assets/tilesets/5_Classroom_and_library_32x32.png'
+    );
+    this.load.image(
+      '6_Music_and_sport_32x32',
+      'assets/tilesets/6_Music_and_sport_32x32.png'
+    );
+    this.load.image(
+      '7_Art_32x32',
+      'assets/tilesets/7_Art_32x32.png'
+    );
+    this.load.image(
+      '8_Gym_32x32',
+      'assets/tilesets/8_Gym_32x32.png'
+    );
+    this.load.image(
+      '9_Fishing_32x32',
+      'assets/tilesets/9_Fishing_32x32.png'
+    );
+    this.load.image(
+      '10_Birthday_party_32x32',
+      'assets/tilesets/10_Birthday_party_32x32.png'
+    );
+    this.load.image(
+      '11_Halloween_32x32',
+      'assets/tilesets/11_Halloween_32x32.png'
+    );
+    this.load.image(
+      '12_Kitchen_32x32',
+      'assets/tilesets/12_Kitchen_32x32.png'
+    );
+    this.load.image(
+      '13_Conference_Hall_32x32',
+      'assets/tilesets/13_Conference_Hall_32x32.png'
+    );
+    this.load.image(
+      '14_Basement_32x32',
+      'assets/tilesets/14_Basement_32x32.png'
+    );
+    this.load.image(
+      '15_Christmas_32x32',
+      'assets/tilesets/15_Christmas_32x32.png'
+    );
+    this.load.image(
+      '16_Grocery_store_32x32',
+      'assets/tilesets/16_Grocery_store_32x32.png'
+    );
+    this.load.image(
+      '17_Visibile_Upstairs_System_32x32',
+      'assets/tilesets/17_Visibile_Upstairs_System_32x32.png'
+    );
+    this.load.image(
+      '18_Jail_32x32',
+      'assets/tilesets/18_Jail_32x32.png'
+    );
+    this.load.image(
+      '19_Hospital_32x32',
+      'assets/tilesets/19_Hospital_32x32.png'
+    );
+    this.load.image(
+      '20_Japanese_interiors_32x32',
+      'assets/tilesets/20_Japanese_interiors_32x322.png'
+    );
+    this.load.image(
+      '21_Clothing_Store_32x32',
+      'assets/tilesets/21_Clothing_Store_32x32.png'
+    );
+    this.load.image(
+      'serene_village_32x32',
       'assets/tilesets/serene_village_32x32.png'
     );
     this.load.image(
-      'Modern Interior Room Builder',
+      'room_builder_32x32',
       'assets/tilesets/room_builder_32x32.png'
+    );
+    this.load.image(
+      'modern_office_32x32',
+      'assets/tilesets/modern_office_32x32.png'
     );
 
     // Spritesheets

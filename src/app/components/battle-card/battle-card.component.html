@@ -1,0 +1,27 @@
+<div class="card" [ngClass]="{ 'me': isPlayer, 'them': !isPlayer }">
+  <h2>Left jab</h2>  
+  <table>
+    <caption></caption>
+    <tbody>
+      <tr>        
+        <th scope="row">Attack:</th>
+        <td>20 to 25 hp</td>
+      </tr>
+      <tr>        
+        <th scope="row">Defense:</th>
+        <td>15 to 25%</td>
+      </tr>
+      <tr>        
+        <th scope="row">Speed:</th>
+        <td>Fast</td>
+      </tr>
+      <tr>        
+        <th scope="row">Stamina:</th>
+        <td>14</td>
+      </tr>      
+    </tbody>
+  </table>
+  <div class="button-holder">
+    <button *ngIf="isPlayer" (click)="select()">Select</button>
+  </div>
+</div>

@@ -1,3 +1,4 @@
-<app-chat></app-chat>
+<app-chat [visible]="chatMode"></app-chat>
+<app-battle [visible]="battleMode"></app-battle>
 <div id="game-container"></div>
 <div *ngIf="!game"><button (click)="start()">Load Game</button></div>

@@ -9,8 +9,11 @@ import { Game } from './models/game';
 export class AppComponent {
   title = 'CodeJam2021';
   game: Game | undefined;
+  battleMode = false;
+  chatMode = false;
 
   start() {
     this.game = new Game();
+    this.battleMode = true;
   }
 }

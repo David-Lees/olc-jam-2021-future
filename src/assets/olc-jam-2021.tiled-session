@@ -1,5 +1,9 @@
 {
-    "activeFile": "tilesets/Hospital.json",
+    "Map/SizeTest": {
+        "height": 4300,
+        "width": 2
+    },
+    "activeFile": "",
     "expandedProjectPaths": [
         "tilesets"
     ],
@@ -8,8 +12,8 @@
             "scale": 1,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 697,
-                "y": 551
+                "x": 695.5,
+                "y": 550
             }
         },
         "tilesets/Hospital.json#Modern Interior Room Builder": {
@@ -26,9 +30,12 @@
             "scale": 0.75,
             "selectedLayer": 6,
             "viewCenter": {
-                "x": 793.3333333333333,
-                "y": 729.3333333333333
+                "x": 799.3333333333333,
+                "y": 480
             }
+        },
+        "tilesets/Hospital.tmx#Generic": {
+            "scaleInDock": 1
         },
         "tilesets/Hospital.tmx#Modern Interior Room Builder": {
             "scaleInDock": 1
@@ -42,25 +49,208 @@
         },
         "tilesets/Modern Interior Room Builder.tsx": {
             "scaleInDock": 1,
-            "scaleInEditor": 1
+            "scaleInEditor": 0.75
         },
         "tilesets/Modern Interiors.tsx": {
             "scaleInDock": 1,
+            "scaleInEditor": 0.75
+        },
+        "tilesets/hospital.tmx": {
+            "scale": 0.25,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 1602,
+                "y": 1196
+            }
+        },
+        "tilesets/hospital.tmx#10_Birthday_party_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/hospital.tmx#11_Halloween_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/hospital.tmx#12_Kitchen_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/hospital.tmx#13_Conference_Hall_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/hospital.tmx#14_Basement_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/hospital.tmx#15_Christmas_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/hospital.tmx#16_Grocery_store_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/hospital.tmx#17_Visibile_Upstairs_System_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/hospital.tmx#18_Jail_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/hospital.tmx#19_Hospital_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/hospital.tmx#1_Generic_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/hospital.tmx#20_Japanese_interiors_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/hospital.tmx#21_Clothing_Store_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/hospital.tmx#22_Museum_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/hospital.tmx#2_LivingRoom_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/hospital.tmx#3_Bathroom_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/hospital.tmx#4_Bedroom_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/hospital.tmx#5_Classroom_and_library_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/hospital.tmx#6_Music_and_sport_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/hospital.tmx#7_Art_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/hospital.tmx#8_Gym_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/hospital.tmx#9_Fishing_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/hospital.tmx#Generic": {
+            "scaleInDock": 1
+        },
+        "tilesets/hospital.tmx#Modern Interior Room Builder": {
+            "scaleInDock": 1
+        },
+        "tilesets/hospital.tmx#Modern Interiors": {
+            "scaleInDock": 1,
             "scaleInEditor": 1
+        },
+        "tilesets/hospital.tmx#Serene_Village_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/hospital.tmx#modern_office_32x32": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "tilesets/hospital.tmx#room_builder_32x32": {
+            "scaleInDock": 0.5
+        },
+        "tilesets/hospital.tmx#serene_village_32x32": {
+            "scaleInDock": 1,
+            "scaleInEditor": 1
+        },
+        "tilesets/template.tmx": {
+            "scale": 0.638875,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 665.2318528663666,
+                "y": 533.7507337116024
+            }
+        },
+        "tilesets/template.tmx#10_Birthday_party_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/template.tmx#11_Halloween_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/template.tmx#12_Kitchen_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/template.tmx#13_Conference_Hall_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/template.tmx#14_Basement_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/template.tmx#15_Christmas_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/template.tmx#16_Grocery_store_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/template.tmx#17_Visibile_Upstairs_System_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/template.tmx#18_Jail_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/template.tmx#19_Hospital_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/template.tmx#1_Generic_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/template.tmx#20_Japanese_interiors_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/template.tmx#21_Clothing_Store_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/template.tmx#22_Museum_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/template.tmx#2_LivingRoom_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/template.tmx#3_Bathroom_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/template.tmx#4_Bedroom_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/template.tmx#5_Classroom_and_library_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/template.tmx#6_Music_and_sport_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/template.tmx#7_Art_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/template.tmx#8_Gym_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/template.tmx#9_Fishing_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/template.tmx#modern_office_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/template.tmx#room_builder_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/template.tmx#serene_village_32x32": {
+            "scaleInDock": 1
         }
     },
+    "last.exportedFilePath": "D:/Projects/olc-jam-2021-future/src/assets/tilesets",
     "last.imagePath": "D:/Projects/olc-jam-2021-future/src/assets/tilesets",
+    "map.lastUsedExportFilter": "JSON map files (*.json)",
+    "map.lastUsedFormat": "tmx",
     "openFiles": [
+    ],
+    "project": "olc-jam-2021.tiled-project",
+    "recentFiles": [
+        "tilesets/hospital.tmx",
+        "tilesets/template.tmx",
         "tilesets/Hospital.json",
         "tilesets/Modern Interiors.tsx",
         "tilesets/Modern Interior Room Builder.tsx",
         "tilesets/Hospital.tmx"
     ],
-    "project": "olc-jam-2021.tiled-project",
-    "recentFiles": [
-        "tilesets/Hospital.tmx",
-        "tilesets/Modern Interior Room Builder.tsx",
-        "tilesets/Modern Interiors.tsx",
-        "tilesets/Hospital.json"
-    ]
+    "tileset.embedInMap": true
 }

@@ -1,0 +1,24 @@
+<div *ngIf="visible" class="battlebox">
+  <div class="glass">
+    <div class="imageHolder me">
+      <img [attr.src]="me" alt="Me" />
+    </div>
+    <div class="card-holder">
+      <app-battle-card [isPlayer]="true"></app-battle-card>
+      <app-battle-card [isPlayer]="true"></app-battle-card>
+      <app-battle-card [isPlayer]="true"></app-battle-card>
+      <app-battle-card [isPlayer]="true"></app-battle-card>
+    </div>
+  </div>
+  <div class="glass">
+    <div class="imageHolder them">
+      <img [attr.src]="them" alt="Them" />
+    </div>
+    <div class="card-holder">
+      <app-battle-card [isPlayer]="false"></app-battle-card>
+      <app-battle-card [isPlayer]="false"></app-battle-card>
+      <app-battle-card [isPlayer]="false"></app-battle-card>
+      <app-battle-card [isPlayer]="false"></app-battle-card>
+    </div>
+  </div>
+</div>
