@@ -1,0 +1,29 @@
+<div *ngIf="visible" class="chatbox">
+    <div class="picture">
+        <div>
+            <img class="circle-me" src="/assets/face1.png" alt="Me">
+        </div>
+        <p>
+            Mark
+        </p>
+    </div>
+    <div class="chat">
+        <div *ngFor="let line of lines" class="line">
+            <div class="bubble" [ngClass]="{ 'me': line.me, 'them': !line.me }">
+                {{ line.text }}
+            </div>
+            <div class="speaker" [ngClass]="{ 'left': line.me, 'right': !line.me }">
+                {{ line.person }}
+            </div>
+        </div>
+        <button id="nextBtn" (click)="next()">{{ nextLabel }}</button>
+    </div>
+    <div class="picture">
+         <div>
+            <img class="circle-them" *ngIf="photo" [attr.src]="photo" alt="Them">
+        </div>
+        <p>
+            {{ name }}
+        </p>
+    </div>
+</div>

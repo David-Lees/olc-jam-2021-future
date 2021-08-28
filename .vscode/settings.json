@@ -1,0 +1,75 @@
+{
+  "[javascript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    },
+    "editor.formatOnSave": false
+  },
+  "[typescript]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    },
+    "editor.formatOnSave": false
+  },
+  "[json]": {
+    "editor.defaultFormatter": "esbenp.prettier-vscode",
+    "editor.codeActionsOnSave": {
+      "source.fixAll.eslint": true
+    },
+    "editor.formatOnSave": false
+  },
+  "eslint.options": {
+    "extensions": [
+      ".ts",
+      ".html"
+    ]
+  },
+  "eslint.validate": [
+    "javascript",
+    "javascriptreact",
+    "typescript",
+    "typescriptreact",
+    "html"
+  ],
+  "cSpell.ignoreWords": [
+    "aerogrid",
+    "autohide",
+    "bottomleft",
+    "changes",
+    "cytoskelton",
+    "getmapping",
+    "keyvalue",
+    "latlng",
+    "msal",
+    "noline",
+    "osgbmouseposition",
+    "service",
+    "sidenav",
+    "usgs"
+  ],
+  "cSpell.words": [
+    "Microsite",
+    "Osgb",
+    "aetiology",
+    "asymmetrik",
+    "behavioural",
+    "changes",
+    "ckeditor",
+    "codemirror",
+    "comment",
+    "cystoskeleton",
+    "cytoskeleton",
+    "devkit",
+    "idaad",
+    "jasminewd",
+    "latlon",
+    "luxon",
+    "mdash",
+    "oie's",
+    "osgridref",
+    "tinymce"
+  ],
+  "typescript.tsdk": "node_modules\\typescript\\lib"
+}
