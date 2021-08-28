@@ -20,11 +20,14 @@ export class Preload extends Phaser.Scene {
 
   private loadAssets() {
     // Images
-    this.load.image('Modern Interiors', 'assets/tilesets/Interiors_32x32.png');
-    this.load.image('Serene_Village_32x32', 'assets/tilesets/Serene_village');
+    this.load.image('Modern Interiors', 'assets/tilesets/interiors_32x32.png');
+    this.load.image(
+      'Serene_Village_32x32',
+      'assets/tilesets/serene_village_32x32.png'
+    );
     this.load.image(
       'Modern Interior Room Builder',
-      'assets/tilesets/Room_Builder_32x32.png'
+      'assets/tilesets/room_builder_32x32.png'
     );
 
     // Spritesheets
@@ -45,8 +48,8 @@ export class Preload extends Phaser.Scene {
     this.anims.create({
       key: `${name}-${Assets.Animations.Move.Right}`,
       frames: this.anims.generateFrameNumbers(name, {
-        start: row * 3,
-        end: row * 3 + 5,
+        start: this.i(0, 2),
+        end: this.i(5, 2),
       }),
       frameRate: 10,
       repeat: -1,
@@ -54,8 +57,8 @@ export class Preload extends Phaser.Scene {
     this.anims.create({
       key: `${name}-${Assets.Animations.Move.Up}`,
       frames: this.anims.generateFrameNumbers(name, {
-        start: row * 3 + 6,
-        end: row * 3 + 11,
+        start: this.i(6, 2),
+        end: this.i(11, 2),
       }),
       frameRate: 10,
       repeat: -1,
@@ -63,8 +66,8 @@ export class Preload extends Phaser.Scene {
     this.anims.create({
       key: `${name}-${Assets.Animations.Move.Left}`,
       frames: this.anims.generateFrameNumbers(name, {
-        start: row * 3 + 12,
-        end: row * 3 + 17,
+        start: this.i(12, 2),
+        end: this.i(17, 2),
       }),
       frameRate: 10,
       repeat: -1,
@@ -72,8 +75,8 @@ export class Preload extends Phaser.Scene {
     this.anims.create({
       key: `${name}-${Assets.Animations.Move.Down}`,
       frames: this.anims.generateFrameNumbers(name, {
-        start: row * 3 + 18,
-        end: row * 3 + 23,
+        start: this.i(18, 2),
+        end: this.i(23, 2),
       }),
       frameRate: 10,
       repeat: -1,
@@ -82,8 +85,8 @@ export class Preload extends Phaser.Scene {
     this.anims.create({
       key: `${name}-${Assets.Animations.Idle.Right}`,
       frames: this.anims.generateFrameNumbers(name, {
-        start: row * 2,
-        end: row * 2 + 5,
+        start: this.i(0,0),
+        end: this.i(0,0),
       }),
       frameRate: 10,
       repeat: -1,
@@ -91,8 +94,8 @@ export class Preload extends Phaser.Scene {
     this.anims.create({
       key: `${name}-${Assets.Animations.Idle.Up}`,
       frames: this.anims.generateFrameNumbers(name, {
-        start: row * 2 + 6,
-        end: row * 2 + 11,
+        start: this.i(1,0),
+        end: this.i(1,0)
       }),
       frameRate: 10,
       repeat: -1,
@@ -100,8 +103,8 @@ export class Preload extends Phaser.Scene {
     this.anims.create({
       key: `${name}-${Assets.Animations.Idle.Left}`,
       frames: this.anims.generateFrameNumbers(name, {
-        start: row * 2 + 12,
-        end: row * 2 + 17,
+        start: this.i(2,0),
+        end: this.i(2,0),
       }),
       frameRate: 10,
       repeat: -1,
@@ -109,11 +112,16 @@ export class Preload extends Phaser.Scene {
     this.anims.create({
       key: `${name}-${Assets.Animations.Idle.Down}`,
       frames: this.anims.generateFrameNumbers(name, {
-        start: row * 2 + 18,
-        end: row * 2 + 23,
+        start: this.i(3,0),
+        end:  this.i(3,0),
       }),
       frameRate: 10,
       repeat: -1,
     });
+  }
+
+  private i(x: number, y: number): number {
+    return (y * 56) + x;
+
   }
 }

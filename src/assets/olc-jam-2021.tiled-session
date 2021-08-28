@@ -1,15 +1,15 @@
 {
-    "activeFile": "tilesets/Hospital.tmx",
+    "activeFile": "tilesets/Hospital.json",
     "expandedProjectPaths": [
         "tilesets"
     ],
     "fileStates": {
         "tilesets/Hospital.json": {
-            "scale": 0.21137499999999998,
+            "scale": 1,
             "selectedLayer": 0,
             "viewCenter": {
-                "x": 804.2578356002366,
-                "y": 482.55470136014196
+                "x": 697,
+                "y": 551
             }
         },
         "tilesets/Hospital.json#Modern Interior Room Builder": {
@@ -19,14 +19,15 @@
             "scaleInDock": 1
         },
         "tilesets/Hospital.json#Serene_Village_32x32": {
-            "scaleInDock": 1
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         },
         "tilesets/Hospital.tmx": {
-            "scale": 0.21137499999999998,
-            "selectedLayer": 0,
+            "scale": 0.75,
+            "selectedLayer": 6,
             "viewCenter": {
-                "x": 804.2578356002366,
-                "y": 482.55470136014196
+                "x": 793.3333333333333,
+                "y": 729.3333333333333
             }
         },
         "tilesets/Hospital.tmx#Modern Interior Room Builder": {
@@ -36,7 +37,8 @@
             "scaleInDock": 1
         },
         "tilesets/Hospital.tmx#Serene_Village_32x32": {
-            "scaleInDock": 1
+            "scaleInDock": 1,
+            "scaleInEditor": 1
         },
         "tilesets/Modern Interior Room Builder.tsx": {
             "scaleInDock": 1,
@@ -47,6 +49,7 @@
             "scaleInEditor": 1
         }
     },
+    "last.imagePath": "D:/Projects/olc-jam-2021-future/src/assets/tilesets",
     "openFiles": [
         "tilesets/Hospital.json",
         "tilesets/Modern Interiors.tsx",
@@ -55,9 +58,9 @@
     ],
     "project": "olc-jam-2021.tiled-project",
     "recentFiles": [
-        "tilesets/Hospital.json",
-        "tilesets/Modern Interiors.tsx",
+        "tilesets/Hospital.tmx",
         "tilesets/Modern Interior Room Builder.tsx",
-        "tilesets/Hospital.tmx"
+        "tilesets/Modern Interiors.tsx",
+        "tilesets/Hospital.json"
     ]
 }

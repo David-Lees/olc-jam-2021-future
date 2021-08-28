@@ -2,7 +2,7 @@ import { Assets } from '../constants/assets';
 import { Orientation } from '../constants/orientation';
 import { Character } from './character';
 
-const PLAYER_SPEED = 80;
+const PLAYER_SPEED = 100;
 
 export class Player extends Character {
   constructor(scene: Phaser.Scene, x: number, y: number, sprite: string) {
@@ -56,8 +56,8 @@ export class Player extends Character {
       const character = this.isDressed ? Assets.Characters.PlayerDress : Assets.Characters.PlayerTrunks;
       const anim = velocityY + velocityX > 0 ? 'Move' : 'Idle';
       const key = `${character}-${Assets.Animations[anim][this.orientation]}`;
-      console.log(key);
-      this.play(key);
+      
+      this.play(key, true);      
   }
 
 }

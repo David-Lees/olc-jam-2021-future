@@ -4,5 +4,5 @@ export abstract class Character extends Phaser.Physics.Arcade.Sprite {
         this.scene = scene;
         this.scene.physics.add.existing(this);
         this.scene.add.existing(this);
-    }    
+    }
 }

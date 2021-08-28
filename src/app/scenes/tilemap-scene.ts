@@ -27,19 +27,19 @@ export class TilemapScene extends Phaser.Scene {
   }
 
   public preload(): void {
-    this.load.tilemapTiledJSON(this.tilemapKey);
+    this.load.tilemapTiledJSON(this.tilemapKey, `assets/tilesets/${this.tilemapKey}.json`);
   }
 
   public create(data: any): void {    
     this.tilemap = this.make.tilemap({ key: this.tilemapKey });
-    const tileset1 = this.tilemap.addTilesetImage('Modern Interiors');
-    const tileset2 = this.tilemap.addTilesetImage('Serene_Village_32x32');
-    const tileset3 = this.tilemap.addTilesetImage('Modern Interior Room Builder');
+    const tileset1 = this.tilemap.addTilesetImage('Modern Interiors', 'Modern Interiors', 32, 32);
+    const tileset2 = this.tilemap.addTilesetImage('Serene_Village_32x32','Serene_Village_32x32', 32 ,32);
+    const tileset3 = this.tilemap.addTilesetImage('Modern Interior Room Builder','Modern Interior Room Builder',32,32);
     
     const layer1 = this.tilemap.createLayer('BelowLower', [tileset1, tileset2, tileset3]);
     const layer2 = this.tilemap.createLayer('BelowPlayer', [tileset1, tileset2, tileset3]);
-    const layer3 = this.tilemap.createLayer('CollidePlayer', [tileset1, tileset2, tileset3]).setCollisionByProperty({ collides: true });
-    const layer4 = this.tilemap.createLayer('ColideDecor', [tileset1, tileset2, tileset3]).setCollisionByProperty({ collides: true });;
+    const layer3 = this.tilemap.createLayer('ColideWithPlayer', [tileset1, tileset2, tileset3]).setCollisionByProperty({ collides: true });
+    const layer4 = this.tilemap.createLayer('ColideDecor', [tileset1, tileset2, tileset3]).setCollisionByProperty({ collides: true });
     const layer5 = this.tilemap.createLayer('AbovePlayer', [tileset1, tileset2, tileset3]);
     const layer6 = this.tilemap.createLayer('AboveHigher', [tileset1, tileset2, tileset3]);
     
@@ -69,6 +69,7 @@ export class TilemapScene extends Phaser.Scene {
       right: this.rightKey.isDown,
       up: this.upKey.isDown,
       down: this.downKey.isDown,
-    }    
+    }  
+    this.player?.updatePlayer(keyPressed);
   }
 }

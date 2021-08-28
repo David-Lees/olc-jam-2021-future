@@ -7,10 +7,10 @@ export class Game extends Phaser.Game {
   constructor() {
     const config: Phaser.Types.Core.GameConfig = {
       type: Phaser.AUTO,
-      parent: 'game-container',
-      width: 800,
-      height: 600,
-      zoom: 2.5,
+      parent: 'game-container',    
+      width: document.body.offsetWidth,
+      height: window.innerHeight,
+      zoom: 1,
       pixelArt: true,
       physics: {
         default: 'arcade',
