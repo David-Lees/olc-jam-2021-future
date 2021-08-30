@@ -2,19 +2,14 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { ChatComponent } from './chat/chat.component';
-import { ChatHistoryComponent } from './chat-history/chat-history.component';
+import { ChatComponent } from './components/chat/chat.component';
+import { BattleComponent } from './components/battle/battle.component';
+import { BattleCardComponent } from './components/battle-card/battle-card.component';
 
 @NgModule({
-  declarations: [
-    AppComponent,
-    ChatComponent,
-    ChatHistoryComponent
-  ],
-  imports: [
-    BrowserModule
-  ],
+  declarations: [AppComponent, ChatComponent, BattleComponent, BattleCardComponent],
+  imports: [BrowserModule],
   providers: [],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
-export class AppModule { }
+export class AppModule {}

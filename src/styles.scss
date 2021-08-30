@@ -1,7 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
 
-@import url('https://fonts.googleapis.com/css2?family=Mali&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Mali&display=swap");
 
+html,
 body {
-    font-family: 'Mali', cursive;
+  font-family: "Mali", cursive;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  overflow: hidden;
+}
+
+#game-container {
+  overflow: hidden;
 }
