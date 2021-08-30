@@ -2,23 +2,56 @@
   <div class="glass">
     <div class="imageHolder me">
       <img [attr.src]="me" alt="Me" />
+      <div class="status card">
+        <h3>Markus</h3>
+        <p>Health</p>
+        <div class="bar">
+          <div class="health" [style.width.px]="playerHealth * 2"></div>
+        </div>
+        <p>Stamina</p>
+        <div class="bar">
+          <div class="stamina" [style.width.px]="playerStamina * 2"></div>
+        </div>
+      </div>
     </div>
     <div class="card-holder">
-      <app-battle-card [isPlayer]="true"></app-battle-card>
-      <app-battle-card [isPlayer]="true"></app-battle-card>
-      <app-battle-card [isPlayer]="true"></app-battle-card>
-      <app-battle-card [isPlayer]="true"></app-battle-card>
+      <app-battle-card (selected)="select(card1)" *ngIf="card1" [card]="card1" [isPlayer]="true"></app-battle-card>
+      <app-battle-card (selected)="select(card2)" *ngIf="card2" [card]="card2" [isPlayer]="true"></app-battle-card>
+      <app-battle-card (selected)="select(card3)" *ngIf="card3" [card]="card3" [isPlayer]="true"></app-battle-card>
+      <app-battle-card (selected)="select(card4)" *ngIf="card4" [card]="card4" [isPlayer]="true"></app-battle-card>
+    </div>
+  </div>
+  <div class="glass">
+    <h1 class="card">Fight!!</h1>
+    <div class="chat card">
+      <p *ngFor="let m of messages" class="line">
+        {{ m }}
+      </p>
+      <div id="scoll-target">
+        
+      </div>
     </div>
   </div>
   <div class="glass">
     <div class="imageHolder them">
       <img [attr.src]="them" alt="Them" />
+      <div class="status card">
+        <h3>{{enemyName}}</h3>
+        <p>Health</p>
+        <div class="bar">
+          <div class="health" [style.width.px]="enemyHealth * 2"></div>
+        </div>
+        <p>Stamina</p>
+        <div class="bar">
+          <div class="stamina" [style.width.px]="enemyStamina * 2"></div>
+        </div>
+      </div>
     </div>
     <div class="card-holder">
-      <app-battle-card [isPlayer]="false"></app-battle-card>
-      <app-battle-card [isPlayer]="false"></app-battle-card>
-      <app-battle-card [isPlayer]="false"></app-battle-card>
-      <app-battle-card [isPlayer]="false"></app-battle-card>
+      <app-battle-card *ngIf="card5" [card]="card5" [isPlayer]="false"></app-battle-card>
+      <app-battle-card *ngIf="card6" [card]="card6" [isPlayer]="false"></app-battle-card>
+      <app-battle-card *ngIf="card7" [card]="card7" [isPlayer]="false"></app-battle-card>
+      <app-battle-card *ngIf="card8" [card]="card8" [isPlayer]="false"></app-battle-card>
     </div>
   </div>
 </div>

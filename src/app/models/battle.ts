@@ -21,5 +21,4 @@ export interface BattleResult {
   attackerHealth: number;
   defenderHealth: number;
   stamina: number;
-  missed: boolean;
 }

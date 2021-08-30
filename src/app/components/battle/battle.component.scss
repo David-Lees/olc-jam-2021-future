@@ -25,9 +25,25 @@ $them: #666600;
 
 }
 
+.chat-box {
+  display: flex;
+
+  h1 {
+    height: 3em;
+  }
+}
+
+.chat {
+  height: 70vh;
+  overflow-y: hidden;
+  padding: 1em;  
+  flex: 10;
+  flex-grow: 10;
+}
+
 .glass {
   height: 90vh;
-  width: 40vw;
+  width: 30vw;
   margin-top: 3vh;
   background-color: rgba(255, 255, 255, .15);  
   backdrop-filter: blur(5px);
@@ -54,4 +70,61 @@ $them: #666600;
   * {
     width: 50%;
   }
+}
+
+.card {
+  border-radius: 20px;
+  background: rgba(255, 255, 0, 0.7);
+  border: 5px solid black;
+  margin: 5px;
+  padding: 10px;
+  margin-bottom: 1em;
+  text-align: center;
+}
+
+.status {
+  position: absolute;
+  top: 0;
+  right: 0;
+  border-radius: 20px;
+  border: 5px solid black;
+  text-align: right;
+
+  h3, p {
+    margin: 0;
+  }
+}
+
+.bar { 
+  border-radius: 5px;
+  height: 10px;
+  padding: 0;
+  background-color: rgba(180, 180, 180, 32);
+  text-align: left;
+  width: 200px;
+
+  .stamina {
+    background-color: rgba(0, 128, 0, 64);
+    margin:0;
+    height: 10px;
+    border-radius: 5px;
+  }
+
+  .health {    
+    background-color: rgba(128, 0, 0, 64);
+    margin:0;
+    height: 10px;
+    border-radius: 5px;
+  }
+}
+
+button {
+  height: 30px;
+  background: darkblue;
+  border: none;
+  color: white;
+  font-weight: bold;
+  font-size: 19px;
+  width: 100%;
+  height: 100%;
 }

@@ -1,18 +1,21 @@
 import { Assets } from '../constants/assets';
 import { Character } from '../models/character';
+import { CodeJamGame } from '../models/game';
 import { Player } from '../models/player';
 
 export class TilemapScene extends Phaser.Scene {
   constructor(key: string) {
     super(key);
-
+    this.name = key;
     this.tilemapKey = key;
   }
 
   player?: Player;
 
+  private name: string;
+
   private tilemapKey: string;
-  private tilemap?: Phaser.Tilemaps.Tilemap;
+  public tilemap?: Phaser.Tilemaps.Tilemap;
 
   private upKey!: Phaser.Input.Keyboard.Key;
   private downKey!: Phaser.Input.Keyboard.Key;
@@ -174,10 +177,12 @@ export class TilemapScene extends Phaser.Scene {
     this.tilemap.createLayer('BelowPlayer', tilesets).setDepth(2);
     this.collideLayer1 = this.tilemap
       .createLayer('CollideWithPlayer', tilesets)
-      .setCollisionBetween(0, 25497, true).setDepth(10);
+      .setCollisionBetween(0, 25497, true)
+      .setDepth(10);
     this.collideLayer2 = this.tilemap
       .createLayer('CollideDecor', tilesets)
-      .setCollisionBetween(0, 25497, true).setDepth(10);
+      .setCollisionBetween(0, 25497, true)
+      .setDepth(10);
     this.tilemap.createLayer('AbovePlayer', tilesets).setDepth(12);
     this.tilemap.createLayer('AboveHigher', tilesets).setDepth(14);
 
@@ -214,7 +219,30 @@ export class TilemapScene extends Phaser.Scene {
     }
 
     this.cameras.main.startFollow(this.player);
-    this.physics.world.setBounds(0,0, this.tilemap.widthInPixels, this.tilemap.heightInPixels);
+    this.physics.world.setBounds(
+      0,
+      0,
+      this.tilemap.widthInPixels,
+      this.tilemap.heightInPixels
+    );
+
+    let comms = (this.game as CodeJamGame).comms;
+
+    comms.of().forEach((message) => {
+      console.log ('recieved message', message, this.name);
+      if (message.channel === 'teleport' && message.data.scene === this.name) {
+        console.log('teleport handler');
+        const target = this.tilemap?.findObject(
+          'Objects',
+          (x) => x.name == message.data.target
+        );
+        console.log('target');
+        if (target) {
+          console.log('Teleporting to ', target);
+          this.player?.setPosition(target.x, target.y);
+        }
+      }
+    });
   }
 
   public update(time: number, delta: number): void {

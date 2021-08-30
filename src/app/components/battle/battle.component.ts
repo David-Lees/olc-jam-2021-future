@@ -1,5 +1,10 @@
 import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import { Attacks, Defences, Wildcards } from 'src/app/constants/attacks';
+import {
+  Attacks,
+  Defences,
+  DummyAttack,
+  Wildcards,
+} from 'src/app/constants/attacks';
 import { BattleOption, BattleResult } from 'src/app/models/battle';
 
 @Component({
@@ -13,16 +18,17 @@ export class BattleComponent implements OnInit {
 
   me = '/assets/avatars/player/dress/normal.png';
   them = '/assets/avatars/mother/angry.png';
+  enemyName = 'They';
 
-  card1: BattleOption | undefined;
-  card2: BattleOption | undefined;
-  card3: BattleOption | undefined;
-  card4: BattleOption | undefined;
+  card1?: BattleOption | null;
+  card2?: BattleOption | null;
+  card3?: BattleOption | null;
+  card4?: BattleOption | null;
 
-  card5: BattleOption | undefined;
-  card6: BattleOption | undefined;
-  card7: BattleOption | undefined;
-  card8: BattleOption | undefined;
+  card5?: BattleOption | null;
+  card6?: BattleOption | null;
+  card7?: BattleOption | null;
+  card8?: BattleOption | null;
 
   messages: string[] = [];
 
@@ -35,6 +41,10 @@ export class BattleComponent implements OnInit {
 
   ngOnInit(): void {
     this.pickCards();
+    setTimeout(() => {
+      const objDiv = document.getElementById('nextBtn');
+      objDiv?.scrollIntoView();
+    }, 10);
   }
 
   pickCards() {
@@ -42,7 +52,7 @@ export class BattleComponent implements OnInit {
     let c2: number;
     do {
       c2 = Math.floor(Math.random() * Attacks.length);
-    } while (c1 === c2);
+    } while (Attacks[c1].name === Attacks[c2].name);
 
     this.card1 = Attacks[c1];
     this.card2 = Attacks[c2];
@@ -61,95 +71,219 @@ export class BattleComponent implements OnInit {
     this.card8 = Wildcards[Math.floor(Math.random() * Wildcards.length)];
   }
 
-  select(card: BattleOption) {
+  enemyChoice(): BattleOption {
     const chance = Math.random();
-    let enemyCard;
-    if (chance <= 0.3) enemyCard = this.card5;
-    else if (chance <= 0.6) enemyCard = this.card6;
-    else if (chance <= 0.85) enemyCard = this.card7;
-    else enemyCard = this.card8;
+    if (chance <= 0.3 && this.card5) return this.card5;
+    if (chance <= 0.6 && this.card6) return this.card6;
+    if (chance <= 0.85 && this.card7) return this.card7;
+    return this.card8 || DummyAttack;
+  }
+
+  select(card: BattleOption) {
+    let pick = true;
+    const enemyCard = this.enemyChoice();
+    console.log(card, enemyCard);
+
+    // decide who managed to hit
+    const playerHit = Math.random() <= card.hitChance;
+    const enemyHit = Math.random() <= enemyCard.hitChance;
 
     // decide who goes first
     if (card.speed >= enemyCard!.speed) {
-      this.doPlayerDamage(card, enemyCard!);
-      this.checkIfWon();
-      this.checkIfLost();
-      this.doEnemyDamage(card, enemyCard!);
+      this.doPlayerAttack(card, enemyCard!, playerHit, enemyHit);
+      pick = pick && !this.checkIfWon();
+      pick = pick && !this.checkIfLost();
+      this.doEnemyAttack(card, enemyCard!, playerHit, enemyHit);
+      pick = pick && !this.checkIfLost();
+      pick = pick && !this.checkIfWon();
     } else {
-      this.doEnemyDamage(card, enemyCard!);
-      this.checkIfLost();
-      this.checkIfWon();
-      this.doPlayerDamage(card, enemyCard!);
+      this.doEnemyAttack(card, enemyCard!, playerHit, enemyHit);
+      pick = pick && !this.checkIfLost();
+      pick = pick && !this.checkIfWon();
+      this.doPlayerAttack(card, enemyCard!, playerHit, enemyHit);
+      pick = pick && !this.checkIfWon();
+      pick = pick && !this.checkIfLost();
     }
 
-    this.pickCards();
+    // Stamina restore. 
+    // Allow enemy to recover faster as they don't pay attention to stamina
+    this.enemyStamina = this.restrain(this.enemyStamina + 5);
+    this.playerStamina = this.restrain(this.playerStamina + 2.5);
+
+    if (pick) {
+      this.pickCards();
+    } else {
+      this.card1 = null;
+      this.card2 = null;
+      this.card3 = null;
+      this.card4 = null;
+      this.card5 = null;
+      this.card6 = null;
+      this.card7 = null;
+      this.card8 = null;
+    }
   }
 
   checkIfWon() {
-    if (this.enemyHealth <= 0) this.won.emit(true);    
+    if (this.enemyHealth <= 0) {
+      this.won.emit(true);
+      return true;
+    }
+    return false;
   }
 
   checkIfLost() {
-    if (this.playerHealth <= 0) this.won.emit(false);
+    if (this.playerHealth <= 0) {
+      this.won.emit(false);
+      return true;
+    }
+    return false;
   }
 
-  doPlayerDamage(card: BattleOption, enemyCard: BattleOption) {
-    var damage = this.calcDamage(card, enemyCard);
+  doPlayerAttack(
+    card: BattleOption,
+    enemyCard: BattleOption,
+    playerHit: boolean,
+    enemyHit: boolean
+  ) {
+    if (this.playerStamina + card.stamina < 0) {
+      this.messages.push(`You tried to ${card.name} but were too exhuasted`);
+      return;
+    }
+    var damage = this.calcDamage(card, enemyCard, playerHit, enemyHit);
+
+    console.log('player attack damage', damage);
+
+    this.playerHealth += damage.attackerHealth;
+    this.enemyHealth += damage.defenderHealth;
+    this.playerStamina += damage.stamina;
+
+    this.playerHealth = this.restrain(this.playerHealth);
+    this.enemyHealth = this.restrain(this.enemyHealth);
+    this.playerStamina = this.restrain(this.playerStamina);
+    this.enemyStamina = this.restrain(this.enemyStamina);
+
+    this.messages.push(
+      `You tried to ${card.name} and ${playerHit ? 'suceeded' : 'failed'}`
+    );
+    if (damage.defenderHealth !== 0) {
+      this.messages.push(
+        `${this.enemyName} ${
+          damage.defenderHealth > 0 ? 'gained' : 'lost'
+        } ${Math.abs(damage.defenderHealth).toFixed(0)} health`
+      );
+    }
+    if (damage.attackerHealth !== 0) {
+      this.messages.push(
+        `You ${damage.attackerHealth > 0 ? 'gained' : 'lost'} ${Math.abs(
+          damage.attackerHealth
+        ).toFixed(0)} health`
+      );
+    }
+  }
+
+  doEnemyAttack(
+    card: BattleOption,
+    enemyCard: BattleOption,
+    playerHit: boolean,
+    enemyHit: boolean
+  ) {
+    if (this.enemyStamina + enemyCard.stamina < 0) {
+      this.messages.push(
+        `${this.enemyName} tried to ${enemyCard.name} but were to exhuasted`
+      );
+      return;
+    }
+    var damage = this.calcDamage(enemyCard, card, enemyHit, playerHit);
+
+    console.log('enemy attack damage', damage);
+
     this.playerHealth += damage.defenderHealth;
     this.enemyHealth += damage.attackerHealth;
-    this.playerStamina += damage.stamina;
+    this.enemyStamina += damage.stamina;
+
+    this.playerHealth = this.restrain(this.playerHealth);
+    this.enemyHealth = this.restrain(this.enemyHealth);
+    this.playerStamina = this.restrain(this.playerStamina);
+    this.enemyStamina = this.restrain(this.enemyStamina);
+
     this.messages.push(
-      `You tried to "${card.name}" and ${damage.missed ? 'failed' : 'suceeded'}`
+      `${this.enemyName} tried to ${enemyCard.name} and ${
+        enemyHit ? 'suceeded' : 'failed'
+      }`
     );
+    if (damage.attackerHealth !== 0) {
+      this.messages.push(
+        `${this.enemyName} ${
+          damage.attackerHealth > 0 ? 'gained' : 'lost'
+        } ${Math.abs(damage.attackerHealth).toFixed(0)} health`
+      );
+    }
+    if (damage.defenderHealth !== 0) {
+      this.messages.push(
+        `You ${damage.defenderHealth > 0 ? 'gained' : 'lost'} ${Math.abs(
+          damage.defenderHealth
+        ).toFixed(0)} health`
+      );
+    }
   }
 
-  doEnemyDamage(card: BattleOption, enemyCard: BattleOption) {
-    var damage = this.calcDamage(enemyCard, card);
-    this.playerHealth += damage.defenderHealth;
-    this.enemyHealth += damage.attackerHealth;
-    this.playerStamina += damage.stamina;
-    this.messages.push(
-      `They tried to "${card.name}" and ${damage.missed ? 'failed' : 'suceeded'}`
-    );
+  restrain(x: number) {
+    if (x > 100) return 100;
+    if (x < 0) return 0;
+    return x;
   }
 
-  calcDamage(card1: BattleOption, card2: BattleOption): BattleResult {
-    const r1 = Math.random();
-    const r2 = Math.random();
-    const r3 = Math.random();
-    const r4 = Math.random();
-    const attack =
-      card1.attack + r1 * card1.attackVariance * 2 - card1.attackVariance;
-    const defence =
-      card2.defence / 100 +
-      r2 * card2.defenceVariance * 2 -
-      card2.defenceVariance;
-    const attacked = card1.hitChance <= r3;
+  calcDamage(
+    attackerCard: BattleOption,
+    defenderCard: BattleOption,
+    attacked: boolean,
+    defended: boolean
+  ): BattleResult {
+    let attackVariance = Math.random() * attackerCard.attackVariance;
+    attackVariance = Math.random() >= 0.5 ? -attackVariance : attackVariance;
+    const attack = attackerCard.attack + attackVariance;
+
+    let defenceVariance = Math.random() * (defenderCard.defenceVariance / 100);
+    defenceVariance = Math.random() >= 0.5 ? -defenceVariance : defenceVariance;
+    const defence = defenderCard.defence / 100 + defenceVariance;
+
+    let healthVariance = Math.random() * attackerCard.healthVariance;
+    healthVariance = Math.random() >= 0.5 ? -healthVariance : healthVariance;
+    const healthBoost = attackerCard.health + healthVariance;
+
+    console.log('attack', attack);
+    console.log('defence', defence);
+    console.log('attacked', attacked);
+    console.log('defended', defended);
 
     let attackerHealth = 0;
     let defenderHealth = 0;
-    if (attacked) {
-      attackerHealth +=
-      card1.health +
-      card1.healthVariance * Math.random() * 2 -
-      card1.healthVariance;
-      defenderHealth -= attack * defence;
-    }
-    
     let stamina = 0;
-    if (card1.stamina > 0) {
-      if (attacked) {
-        stamina += card1.stamina;
+
+    if (attacked) {
+      // apply positive health/stamina effects
+      attackerHealth += healthBoost;
+      if (attackerCard.stamina > 0) stamina += attackerCard.stamina;
+
+      // apply hp to opponent
+      if (defended) {
+        defenderHealth -= attack * (1 - defence);
       }
-    } else {
-      stamina += card1.stamina;
+      else {
+        defenderHealth -= attack;
+      }
+    }
+
+    // always use stamina if negative
+    if (attackerCard.stamina < 0) {
+      stamina += attackerCard.stamina;
     }
 
     return {
       attackerHealth: attackerHealth,
       defenderHealth: defenderHealth,
-      stamina: card1.stamina,
-      missed: !attacked,
+      stamina: stamina,
     };
   }
 }

@@ -1,6 +1,7 @@
 import { Assets } from '../constants/assets';
 import { Orientation } from '../constants/orientation';
 import { Character } from './character';
+import { CodeJamGame } from './game';
 
 const PLAYER_SPEED = 200;
 
@@ -21,7 +22,7 @@ export class Player extends Character {
   private orientation: Orientation = Orientation.Down;
 
   public updatePlayer(keyPressed: any) {
-    if (!this.active) return;
+    if (!this.active || (this.scene.game as CodeJamGame).paused) return;
 
     this.setVelocity(0);
     this.handleMovement(keyPressed);

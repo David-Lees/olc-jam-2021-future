@@ -2,7 +2,7 @@ import { BattleOption } from '../models/battle';
 
 export const Attacks: BattleOption[] = [
   {
-    name: 'Left hook',
+    name: 'LEFT HOOK',
     attack: 7,
     attackVariance: 3,
     defence: 0,
@@ -12,10 +12,10 @@ export const Attacks: BattleOption[] = [
     stamina: -10,
     hitChance: 0.75,
     health: 0,
-    healthVariance: 0
+    healthVariance: 0,
   },
   {
-    name: 'Right hook',
+    name: 'RIGHT HOOK',
     attack: 10,
     attackVariance: 4,
     defence: 0,
@@ -25,10 +25,10 @@ export const Attacks: BattleOption[] = [
     stamina: -10,
     hitChance: 0.75,
     health: 0,
-    healthVariance: 0
+    healthVariance: 0,
   },
   {
-    name: 'Left jab',
+    name: 'LEFT JAB',
     attack: 8,
     attackVariance: 3,
     defence: 0,
@@ -38,10 +38,10 @@ export const Attacks: BattleOption[] = [
     stamina: -10,
     hitChance: 0.85,
     health: 0,
-    healthVariance: 0
+    healthVariance: 0,
   },
   {
-    name: 'Right jab',
+    name: 'RIGHT JAB',
     attack: 12,
     attackVariance: 4,
     defence: 0,
@@ -51,10 +51,10 @@ export const Attacks: BattleOption[] = [
     stamina: -10,
     hitChance: 0.95,
     health: 0,
-    healthVariance: 0
+    healthVariance: 0,
   },
   {
-    name: 'Knee groin',
+    name: 'KNEE GROIN',
     attack: 25,
     attackVariance: 5,
     defence: 0,
@@ -64,10 +64,10 @@ export const Attacks: BattleOption[] = [
     stamina: -10,
     hitChance: 0.5,
     health: 0,
-    healthVariance: 0
+    healthVariance: 0,
   },
   {
-    name: 'Headbutt',
+    name: 'HEADBUTT',
     attack: 12,
     attackVariance: 4,
     defence: 0,
@@ -77,10 +77,10 @@ export const Attacks: BattleOption[] = [
     stamina: -15,
     hitChance: 0.85,
     health: -5,
-    healthVariance: 2
+    healthVariance: 2,
   },
   {
-    name: 'Kick',
+    name: 'KICK',
     attack: 15,
     attackVariance: 4,
     defence: 0,
@@ -90,10 +90,10 @@ export const Attacks: BattleOption[] = [
     stamina: -15,
     hitChance: 0.85,
     health: 0,
-    healthVariance: 0
+    healthVariance: 0,
   },
   {
-    name: 'Tickle',
+    name: 'TICKLE',
     attack: 5,
     attackVariance: 4,
     defence: 0,
@@ -103,26 +103,26 @@ export const Attacks: BattleOption[] = [
     stamina: -5,
     hitChance: 0.75,
     health: 0,
-    healthVariance: 0
+    healthVariance: 0,
   },
   {
-    name: 'Judo throw',
+    name: 'JUDO THROW',
     attack: 55,
     attackVariance: 10,
     defence: 0,
     defenceVariance: 0,
     speed: 1,
     speedDescription: 'slow',
-    stamina: -25,
+    stamina: -30,
     hitChance: 0.75,
     health: 0,
-    healthVariance: 0
+    healthVariance: 0,
   },
 ];
 
 export const Defences: BattleOption[] = [
   {
-    name: 'Duck',
+    name: 'DUCK',
     attack: 0,
     attackVariance: 0,
     defence: 45,
@@ -132,10 +132,10 @@ export const Defences: BattleOption[] = [
     stamina: -15,
     hitChance: 0.85,
     health: 0,
-    healthVariance: 0
+    healthVariance: 0,
   },
   {
-    name: 'Duck',
+    name: 'DUCK',
     attack: 0,
     attackVariance: 0,
     defence: 45,
@@ -145,10 +145,10 @@ export const Defences: BattleOption[] = [
     stamina: -15,
     hitChance: 0.85,
     health: 0,
-    healthVariance: 0
+    healthVariance: 0,
   },
   {
-    name: 'Dodge',
+    name: 'DODGE',
     attack: 0,
     attackVariance: 0,
     defence: 80,
@@ -158,10 +158,10 @@ export const Defences: BattleOption[] = [
     stamina: -15,
     hitChance: 0.85,
     health: 0,
-    healthVariance: 0
+    healthVariance: 0,
   },
   {
-    name: 'Dodge',
+    name: 'DODGE',
     attack: 0,
     attackVariance: 0,
     defence: 80,
@@ -171,10 +171,10 @@ export const Defences: BattleOption[] = [
     stamina: -15,
     hitChance: 0.85,
     health: 0,
-    healthVariance: 0
+    healthVariance: 0,
   },
   {
-    name: 'Dodge',
+    name: 'DODGE',
     attack: 0,
     attackVariance: 0,
     defence: 80,
@@ -184,10 +184,10 @@ export const Defences: BattleOption[] = [
     stamina: -15,
     hitChance: 0.85,
     health: 0,
-    healthVariance: 0
+    healthVariance: 0,
   },
   {
-    name: 'Side-step',
+    name: 'SIDE-STEP',
     attack: 0,
     attackVariance: 0,
     defence: 83,
@@ -197,10 +197,10 @@ export const Defences: BattleOption[] = [
     stamina: -15,
     hitChance: 0.85,
     health: 0,
-    healthVariance: 0
+    healthVariance: 0,
   },
   {
-    name: 'Jump back',
+    name: 'JUMP BACK',
     attack: 0,
     attackVariance: 0,
     defence: 83,
@@ -210,10 +210,10 @@ export const Defences: BattleOption[] = [
     stamina: -20,
     hitChance: 0.67,
     health: 0,
-    healthVariance: 0
+    healthVariance: 0,
   },
   {
-    name: 'Jump back',
+    name: 'JUMP BACK',
     attack: 0,
     attackVariance: 0,
     defence: 83,
@@ -223,13 +223,13 @@ export const Defences: BattleOption[] = [
     stamina: -20,
     hitChance: 0.67,
     health: 0,
-    healthVariance: 0
+    healthVariance: 0,
   },
 ];
 
 export const Wildcards: BattleOption[] = [
   {
-    name: 'Laugh',
+    name: 'LAUGH',
     attack: 0,
     attackVariance: 0,
     defence: 0,
@@ -239,10 +239,10 @@ export const Wildcards: BattleOption[] = [
     stamina: 10,
     hitChance: 0.67,
     health: 10,
-    healthVariance: 0
+    healthVariance: 0,
   },
   {
-    name: 'Laugh',
+    name: 'LAUGH',
     attack: 0,
     attackVariance: 0,
     defence: 0,
@@ -252,10 +252,10 @@ export const Wildcards: BattleOption[] = [
     stamina: 10,
     hitChance: 0.67,
     health: 10,
-    healthVariance: 0
+    healthVariance: 0,
   },
   {
-    name: 'Titty twister',
+    name: 'TITTY TWISTER',
     attack: 14,
     attackVariance: 3,
     defence: 0,
@@ -265,10 +265,10 @@ export const Wildcards: BattleOption[] = [
     stamina: 0,
     hitChance: 0.99,
     health: 0,
-    healthVariance: 0
+    healthVariance: 0,
   },
   {
-    name: 'Chinese burn',
+    name: 'CHINESE BURN',
     attack: 16,
     attackVariance: 3,
     defence: 0,
@@ -278,10 +278,10 @@ export const Wildcards: BattleOption[] = [
     stamina: 0,
     hitChance: 0.99,
     health: 0,
-    healthVariance: 0
-  }, 
+    healthVariance: 0,
+  },
   {
-    name: 'Chinese burn',
+    name: 'CHINESE BURN',
     attack: 16,
     attackVariance: 3,
     defence: 0,
@@ -291,10 +291,10 @@ export const Wildcards: BattleOption[] = [
     stamina: 0,
     hitChance: 0.99,
     health: 0,
-    healthVariance: 0
-  },  
+    healthVariance: 0,
+  },
   {
-    name: 'Take deep breath',
+    name: 'TAKE DEEP BREATH',
     attack: 0,
     attackVariance: 0,
     defence: 0,
@@ -302,12 +302,12 @@ export const Wildcards: BattleOption[] = [
     speed: 100,
     speedDescription: 'instant',
     stamina: 30,
-    hitChance: 0.90,
+    hitChance: 0.9,
     health: 25,
-    healthVariance: 0
+    healthVariance: 0,
   },
   {
-    name: 'Take deep breath',
+    name: 'TAKE DEEP BREATH',
     attack: 0,
     attackVariance: 0,
     defence: 0,
@@ -315,12 +315,12 @@ export const Wildcards: BattleOption[] = [
     speed: 100,
     speedDescription: 'instant',
     stamina: 30,
-    hitChance: 0.90,
+    hitChance: 0.9,
     health: 25,
-    healthVariance: 0
+    healthVariance: 0,
   },
   {
-    name: 'Take deep breath',
+    name: 'TAKE DEEP BREATH',
     attack: 0,
     attackVariance: 0,
     defence: 0,
@@ -328,12 +328,12 @@ export const Wildcards: BattleOption[] = [
     speed: 100,
     speedDescription: 'instant',
     stamina: 30,
-    hitChance: 0.90,
+    hitChance: 0.9,
     health: 25,
-    healthVariance: 0
+    healthVariance: 0,
   },
   {
-    name: 'Eat cheese',
+    name: 'EAT CHEESE',
     attack: 0,
     attackVariance: 0,
     defence: 0,
@@ -341,8 +341,22 @@ export const Wildcards: BattleOption[] = [
     speed: 100,
     speedDescription: 'instant',
     stamina: 10,
-    hitChance: 0.90,
+    hitChance: 0.9,
     health: 50,
-    healthVariance: 0
+    healthVariance: 0,
   },
 ];
+
+export const DummyAttack = {
+  name: 'NOTHING',
+  attack: 0,
+  attackVariance: 0,
+  defence: 0,
+  defenceVariance: 0,
+  speed: 0,
+  speedDescription: 'very slow',
+  stamina: 0,
+  hitChance: 1,
+  health: 0,
+  healthVariance: 0,
+};

@@ -3,10 +3,11 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "",
+    "activeFile": "tilesets/overworld.tmx",
     "expandedProjectPaths": [
         "tilesets"
     ],
+    "file.lastUsedOpenFilter": "All Files (*)",
     "fileStates": {
         "tilesets/Hospital.json": {
             "scale": 1,
@@ -55,12 +56,95 @@
             "scaleInDock": 1,
             "scaleInEditor": 0.75
         },
-        "tilesets/hospital.tmx": {
-            "scale": 0.25,
-            "selectedLayer": 0,
+        "tilesets/gym.tmx": {
+            "scale": 1,
+            "selectedLayer": 6,
             "viewCenter": {
-                "x": 1602,
-                "y": 1196
+                "x": 858.5,
+                "y": 346
+            }
+        },
+        "tilesets/gym.tmx#10_Birthday_party_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/gym.tmx#11_Halloween_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/gym.tmx#12_Kitchen_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/gym.tmx#13_Conference_Hall_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/gym.tmx#14_Basement_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/gym.tmx#15_Christmas_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/gym.tmx#16_Grocery_store_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/gym.tmx#17_Visibile_Upstairs_System_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/gym.tmx#18_Jail_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/gym.tmx#19_Hospital_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/gym.tmx#1_Generic_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/gym.tmx#20_Japanese_interiors_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/gym.tmx#21_Clothing_Store_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/gym.tmx#22_Museum_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/gym.tmx#2_LivingRoom_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/gym.tmx#3_Bathroom_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/gym.tmx#4_Bedroom_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/gym.tmx#5_Classroom_and_library_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/gym.tmx#6_Music_and_sport_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/gym.tmx#7_Art_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/gym.tmx#8_Gym_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/gym.tmx#9_Fishing_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/gym.tmx#modern_office_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/gym.tmx#room_builder_32x32": {
+            "scaleInDock": 0.5
+        },
+        "tilesets/gym.tmx#serene_village_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/hospital.tmx": {
+            "scale": 0.5,
+            "selectedLayer": 6,
+            "viewCenter": {
+                "x": 928,
+                "y": 870
             }
         },
         "tilesets/hospital.tmx#10_Birthday_party_32x32": {
@@ -153,6 +237,89 @@
             "scaleInDock": 1,
             "scaleInEditor": 1
         },
+        "tilesets/overworld.tmx": {
+            "scale": 1,
+            "selectedLayer": 0,
+            "viewCenter": {
+                "x": 2237,
+                "y": 2533
+            }
+        },
+        "tilesets/overworld.tmx#10_Birthday_party_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/overworld.tmx#11_Halloween_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/overworld.tmx#12_Kitchen_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/overworld.tmx#13_Conference_Hall_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/overworld.tmx#14_Basement_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/overworld.tmx#15_Christmas_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/overworld.tmx#16_Grocery_store_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/overworld.tmx#17_Visibile_Upstairs_System_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/overworld.tmx#18_Jail_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/overworld.tmx#19_Hospital_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/overworld.tmx#1_Generic_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/overworld.tmx#20_Japanese_interiors_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/overworld.tmx#21_Clothing_Store_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/overworld.tmx#22_Museum_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/overworld.tmx#2_LivingRoom_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/overworld.tmx#3_Bathroom_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/overworld.tmx#4_Bedroom_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/overworld.tmx#5_Classroom_and_library_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/overworld.tmx#6_Music_and_sport_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/overworld.tmx#7_Art_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/overworld.tmx#8_Gym_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/overworld.tmx#9_Fishing_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/overworld.tmx#modern_office_32x32": {
+            "scaleInDock": 1
+        },
+        "tilesets/overworld.tmx#room_builder_32x32": {
+            "scaleInDock": 0.5
+        },
+        "tilesets/overworld.tmx#serene_village_32x32": {
+            "scaleInDock": 1
+        },
         "tilesets/template.tmx": {
             "scale": 0.638875,
             "selectedLayer": 0,
@@ -242,10 +409,15 @@
     "map.lastUsedExportFilter": "JSON map files (*.json)",
     "map.lastUsedFormat": "tmx",
     "openFiles": [
+        "tilesets/gym.tmx",
+        "tilesets/overworld.tmx",
+        "tilesets/hospital.tmx"
     ],
     "project": "olc-jam-2021.tiled-project",
     "recentFiles": [
+        "tilesets/gym.tmx",
         "tilesets/hospital.tmx",
+        "tilesets/overworld.tmx",
         "tilesets/template.tmx",
         "tilesets/Hospital.json",
         "tilesets/Modern Interiors.tsx",

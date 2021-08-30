@@ -6,6 +6,7 @@ export interface Question extends TextEntry {
 
 export interface TextEntry {
   text: string;
+  outputText?: string;
   photo?: string;
   person?: string;
   me: boolean;
@@ -31,6 +32,7 @@ export class ChatComponent implements OnInit {
   photo: string = photo;
   name: string = 'Obi-wan';
   nextLabel = 'Next';
+  nextEnabled = true;
   currentLine = 0;
   tree: DialogTree;
   lines: TextEntry[] = [];
@@ -61,14 +63,27 @@ export class ChatComponent implements OnInit {
 
   ngOnInit(): void {
     this.next();
+    setTimeout(() => {
+      const objDiv = document.getElementById("nextBtn");
+      objDiv?.scrollIntoView();
+    }, 10);
   }
 
   next() {
-    if (this.currentLine < this.tree.lines.length) {
+    if (this.currentLine < this.tree.lines.length && this.nextEnabled) {
       const entry = this.tree.lines[this.currentLine];
       if (entry.me) entry.person = 'Mark';
       console.log(entry);
       this.lines.push(entry);
+
+      this.nextEnabled = false;
+      for (let i = 0; i < entry.text.length; i++) {
+        setTimeout(() => {
+          entry.outputText = entry.text.substr(0,i);
+          if (entry.outputText === entry.text) this.nextEnabled = true;
+        }, i * 50);
+      }
+
       if (entry.person) this.name = entry.person;
       if (entry.photo) this.photo = entry.photo;
       if (entry.next) {
@@ -80,10 +95,6 @@ export class ChatComponent implements OnInit {
       } else {
         this.currentLine++;
       }
-      setTimeout(() => {
-        const objDiv = document.getElementById("nextBtn");
-        objDiv?.scrollIntoView();
-      }, 10);
     }
   }
 

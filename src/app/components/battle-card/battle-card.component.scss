@@ -1,7 +1,10 @@
 $me: #000066;
 $them: #666600;
 
-h2 { margin: 0; }
+h2 {
+  margin: 0;
+  font-size: 22px;
+}
 
 .me {
   border: 5px solid $me;

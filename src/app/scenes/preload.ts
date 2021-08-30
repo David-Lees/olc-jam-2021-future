@@ -12,6 +12,7 @@ export class Preload extends Phaser.Scene {
     }
 
     this.scene.launch('hospital');
+    this.scene.sendToBack
   }
 
   protected preload() {
@@ -98,7 +99,7 @@ export class Preload extends Phaser.Scene {
     );
     this.load.image(
       '20_Japanese_interiors_32x32',
-      'assets/tilesets/20_Japanese_interiors_32x322.png'
+      'assets/tilesets/20_Japanese_interiors_32x32.png'
     );
     this.load.image(
       '21_Clothing_Store_32x32',

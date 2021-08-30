@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { Game } from './models/game';
+import { CommunicationsService } from './communications.service';
+import { CodeJamGame } from './models/game';
 
 @Component({
   selector: 'app-root',
@@ -8,12 +9,15 @@ import { Game } from './models/game';
 })
 export class AppComponent {
   title = 'CodeJam2021';
-  game: Game | undefined;
+  game: CodeJamGame | undefined;
   battleMode = false;
   chatMode = false;
 
+  constructor(public comms: CommunicationsService) {
+  }
+
   start() {
-    this.game = new Game();
-    this.battleMode = true;
+    this.game = new CodeJamGame(this.comms);
+    //this.battleMode = true;
   }
 }

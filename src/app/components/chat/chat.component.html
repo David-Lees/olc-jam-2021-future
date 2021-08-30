@@ -10,13 +10,13 @@
     <div class="chat">
         <div *ngFor="let line of lines" class="line">
             <div class="bubble" [ngClass]="{ 'me': line.me, 'them': !line.me }">
-                {{ line.text }}
+                {{ line.outputText }}
             </div>
             <div class="speaker" [ngClass]="{ 'left': line.me, 'right': !line.me }">
                 {{ line.person }}
             </div>
         </div>
-        <button id="nextBtn" (click)="next()">{{ nextLabel }}</button>
+        <button id="nextBtn" (click)="next()" [disabled]="!nextEnabled">{{ nextLabel }}</button>
     </div>
     <div class="picture">
          <div>
