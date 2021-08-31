@@ -27,7 +27,7 @@ export class HospitalScene extends TilemapScene {
         exit.height
       );
       this.physics.add.existing(this.exitZone);
-    }
+    }    
   }
 
   public update(time: number, delta: number): void {

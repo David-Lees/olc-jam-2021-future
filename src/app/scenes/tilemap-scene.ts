@@ -280,5 +280,5 @@ export class TilemapScene extends Phaser.Scene {
         });
       });
     }
-  }
+  }  
 }
