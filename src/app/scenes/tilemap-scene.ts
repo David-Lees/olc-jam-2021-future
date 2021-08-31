@@ -78,8 +78,8 @@ export class TilemapScene extends Phaser.Scene {
         32,
         32
       ),
-      this.tilemap.addTilesetImage('7_Art_32x32', '7_Art_32x32', 32, 32, 1, 0),
-      this.tilemap.addTilesetImage('8_Gym_32x32', '8_Gym_32x32', 32, 32, 1, 0),
+      this.tilemap.addTilesetImage('7_Art_32x32', '7_Art_32x32', 32, 32, 0, 0),
+      this.tilemap.addTilesetImage('8_Gym_32x32', '8_Gym_32x32', 32, 32, 0, 0),
       this.tilemap.addTilesetImage(
         '9_Fishing_32x32',
         '9_Fishing_32x32',

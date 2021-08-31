@@ -1,4 +1,6 @@
-<app-chat [visible]="chatMode"></app-chat>
+<ng-container *ngIf="chatMode">
+  <app-chat [tree]="conversation" [game]="game" [parent]="this" [resume]="resume"></app-chat>
+</ng-container>
 <app-battle [visible]="battleMode"></app-battle>
 <div id="game-container"></div>
 <div *ngIf="!game"><button (click)="start()">Load Game</button></div>

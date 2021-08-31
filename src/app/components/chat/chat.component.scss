@@ -35,7 +35,7 @@ $them: #666600;
 
 .them {
   background: $them;
-  text-align: right;
+  text-align: left;
 }
 
 .left {
@@ -88,4 +88,29 @@ $them: #666600;
 .circle-them {
   border-radius: 50%;
   border: 5px solid $them;
+}
+
+.glass {
+  height: 90vh;
+  width: 30vw;
+  margin-top: 3vh;
+  background-color: rgba(255, 255, 255, .15);  
+  backdrop-filter: blur(5px);
+  border-radius: 20px;
+  border: 5px solid rgba(255, 255, 255, .25);
+  filter: drop-shadow(30px 10px 4px #757575);
+  padding: 20px;
+}
+
+.name {
+  font-size: 22px;
+  font-weight: bold;
+  text-align: center;
+}
+
+#nextbutton {
+  padding: 1em;
+  font-size: 19px;
+  margin-left: auto;
+  margin-right: auto;
 }

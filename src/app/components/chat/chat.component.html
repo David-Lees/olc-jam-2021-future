@@ -1,13 +1,13 @@
-<div *ngIf="visible" class="chatbox">
-    <div class="picture">
+<div class="chatbox">
+    <div class="picture glass">
         <div>
-            <img class="circle-me" src="/assets/face1.png" alt="Me">
+            <img class="circle-me" [attr.src]="photoLeft" alt="Me">
         </div>
-        <p>
+        <p class="name">
             Mark
         </p>
     </div>
-    <div class="chat">
+    <div class="chat glass">
         <div *ngFor="let line of lines" class="line">
             <div class="bubble" [ngClass]="{ 'me': line.me, 'them': !line.me }">
                 {{ line.outputText }}
@@ -18,11 +18,11 @@
         </div>
         <button id="nextBtn" (click)="next()" [disabled]="!nextEnabled">{{ nextLabel }}</button>
     </div>
-    <div class="picture">
+    <div class="picture glass">
          <div>
-            <img class="circle-them" *ngIf="photo" [attr.src]="photo" alt="Them">
+            <img class="circle-them" *ngIf="photoRight" [attr.src]="photoRight" alt="Them">
         </div>
-        <p>
+        <p class="name">
             {{ name }}
         </p>
     </div>

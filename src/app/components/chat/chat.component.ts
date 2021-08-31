@@ -1,72 +1,42 @@
-import { Component, Input, OnInit } from '@angular/core';
-
-export interface Question extends TextEntry {
-  answers: TextEntry[];
-}
-
-export interface TextEntry {
-  text: string;
-  outputText?: string;
-  photo?: string;
-  person?: string;
-  me: boolean;
-  label?: string;
-  next?: string;
-  take?: string;
-  give?: string;
-}
-
-export interface DialogTree {
-  lines: Array<Question | TextEntry>;
-}
-
-const photo = '/assets/face1.png';
-
+import { Component, Input, OnDestroy, OnInit } from '@angular/core';
+import { AppComponent } from 'src/app/app.component';
+import { DialogTree, TextEntry } from 'src/app/constants/conversations';
+import { CodeJamGame } from 'src/app/models/game';
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.scss'],
 })
-export class ChatComponent implements OnInit {
-  @Input() visible = false;
-  photo: string = photo;
-  name: string = 'Obi-wan';
+export class ChatComponent implements OnInit, OnDestroy {  
+  @Input() tree: DialogTree = { lines: [] };
+  @Input() game: CodeJamGame | undefined;
+  @Input() parent: AppComponent | undefined;
+  @Input() resume: string | undefined;
+  photoLeft: string = '';
+  photoRight: string = '';
+  name: string = '';
   nextLabel = 'Next';
   nextEnabled = true;
   currentLine = 0;
-  tree: DialogTree;
-  lines: TextEntry[] = [];
 
-  constructor() {
-    this.tree = {
-      lines: [
-        { text: 'Hello world', me: true },
-        { text: 'Hello there!', me: false, person: 'Obi-wan', photo: photo },
-        { text: 'Nice to meet you', me: true },
-        {
-          text: 'Parrots are the best birds in the whole world',
-          me: false,
-          person: 'Obi-wan',
-          photo: photo,
-        },
-        { text: "Oh no the're not!", me: true, label: 'not' },
-        {
-          text: 'Oh yes they are!',
-          me: false,
-          person: 'Obi-wan',
-          photo: photo,
-          next: 'not',
-        },
-      ],
-    };
-  }
+  lines: TextEntry[] = [];
+  
+  private scroller: any;
+
+  constructor() {}
 
   ngOnInit(): void {
     this.next();
-    setTimeout(() => {
-      const objDiv = document.getElementById("nextBtn");
+    this.scroller = setInterval(() => {      
+      const objDiv = document.getElementById('nextBtn');
       objDiv?.scrollIntoView();
     }, 10);
+  }
+
+  ngOnDestroy() {
+    if (this.scroller) {
+      clearInterval(this.scroller);
+    }
   }
 
   next() {
@@ -77,15 +47,16 @@ export class ChatComponent implements OnInit {
       this.lines.push(entry);
 
       this.nextEnabled = false;
-      for (let i = 0; i < entry.text.length; i++) {
+      for (let i = 0; i <= entry.text.length; i++) {
         setTimeout(() => {
-          entry.outputText = entry.text.substr(0,i);
+          entry.outputText = entry.text.substr(0, i);
           if (entry.outputText === entry.text) this.nextEnabled = true;
-        }, i * 50);
+        }, i * 40);
       }
 
-      if (entry.person) this.name = entry.person;
-      if (entry.photo) this.photo = entry.photo;
+      this.name = entry.person || '';
+      this.photoLeft = entry.photoLeft || '';
+      this.photoRight = entry.photoRight || '';
       if (entry.next) {
         this.currentLine = this.findWithAttr(
           this.tree.lines,
@@ -95,6 +66,10 @@ export class ChatComponent implements OnInit {
       } else {
         this.currentLine++;
       }
+    }
+    if (this.currentLine >= this.tree.lines.length) {
+      if (this.parent) this.parent.chatMode = false;
+      this.game?.scene.resume(this.resume || '');
     }
   }
 

@@ -11,8 +11,7 @@ export class Preload extends Phaser.Scene {
         this.createAnimations(Assets.Characters[key]);
     }
 
-    this.scene.launch('hospital');
-    this.scene.sendToBack
+    this.scene.launch('gym');
   }
 
   protected preload() {
