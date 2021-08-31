@@ -8,6 +8,9 @@ import { OverworldScene } from '../scenes/overworld';
 
 export class CodeJamGame extends Phaser.Game {
   public paused = false;
+  
+  public teleportCooldown = -1;
+
   constructor(public comms: CommunicationsService) {    
     super({
       type: Phaser.AUTO,

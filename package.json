@@ -6,7 +6,8 @@
     "start": "ng serve",
     "build": "ng build",
     "watch": "ng build --watch --configuration development",
-    "test": "ng test"
+    "test": "ng test",
+    "fix-tilesets": "./fix-tilesets.sh"
   },
   "private": true,
   "dependencies": {
@@ -20,6 +21,7 @@
     "@angular/router": "~12.2.3",
     "prettier": "^2.3.2",
     "rxjs": "~6.6.0",
+    "tile-extruder": "^2.1.0",
     "tslib": "^2.3.0",
     "zone.js": "~0.11.4"
   },

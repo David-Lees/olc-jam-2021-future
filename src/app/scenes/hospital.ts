@@ -33,26 +33,7 @@ export class HospitalScene extends TilemapScene {
   public update(time: number, delta: number): void {
     super.update(time, delta);
     super.player?.update();
-    if (this.exitZone) {
-      this.physics.overlap(this.exitZone, this.player, () => {
-        console.log('overlapped teleport trigger for exit hospital');
 
-        let s = this.scene.get('overworld');
-        if (s) {
-          console.log('found scene', s);
-          this.scene.switch(s);
-        } else {
-          console.log('scene not found, so starting', 'overworld');
-          this.scene.launch('overworld');
-          this.scene.switch('overworld');
-        }
-
-        this.scene.switch('overworld');
-        (this.game as CodeJamGame).comms.publish({
-          channel: 'Teleport',
-          data: { scene: 'overworld', target: 'ExitHospital' },
-        });
-      });
-    }
+    this.checkTeleport(this.exitZone, 'overworld', 'HospitalExit');
   }
 }

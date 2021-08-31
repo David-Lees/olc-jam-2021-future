@@ -58,9 +58,9 @@
         },
         "tilesets/gym.tmx": {
             "scale": 1,
-            "selectedLayer": 6,
+            "selectedLayer": 2,
             "viewCenter": {
-                "x": 858.5,
+                "x": 373,
                 "y": 346
             }
         },
@@ -238,11 +238,11 @@
             "scaleInEditor": 1
         },
         "tilesets/overworld.tmx": {
-            "scale": 1,
-            "selectedLayer": 0,
+            "scale": 1.5,
+            "selectedLayer": 6,
             "viewCenter": {
-                "x": 2237,
-                "y": 2533
+                "x": 2831.333333333333,
+                "y": 2544
             }
         },
         "tilesets/overworld.tmx#10_Birthday_party_32x32": {

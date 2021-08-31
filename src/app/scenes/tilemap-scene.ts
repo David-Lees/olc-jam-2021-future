@@ -52,7 +52,7 @@ export class TilemapScene extends Phaser.Scene {
         '2_LivingRoom_32x32',
         '2_LivingRoom_32x32',
         32,
-        32
+        32       
       ),
       this.tilemap.addTilesetImage(
         '3_Bathroom_32x32',
@@ -78,8 +78,8 @@ export class TilemapScene extends Phaser.Scene {
         32,
         32
       ),
-      this.tilemap.addTilesetImage('7_Art_32x32', '7_Art_32x32', 32, 32),
-      this.tilemap.addTilesetImage('8_Gym_32x32', '8_Gym_32x32', 32, 32),
+      this.tilemap.addTilesetImage('7_Art_32x32', '7_Art_32x32', 32, 32, 1, 0),
+      this.tilemap.addTilesetImage('8_Gym_32x32', '8_Gym_32x32', 32, 32, 1, 0),
       this.tilemap.addTilesetImage(
         '9_Fishing_32x32',
         '9_Fishing_32x32',
@@ -134,7 +134,12 @@ export class TilemapScene extends Phaser.Scene {
         32,
         32
       ),
-      this.tilemap.addTilesetImage('18_Jail_32x32', '18_Jail_32x32', 32, 32),
+      this.tilemap.addTilesetImage(
+        '18_Jail_32x32',
+        '18_Jail_32x32',
+        32,
+        32
+      ),
       this.tilemap.addTilesetImage(
         '19_Hospital_32x32',
         '19_Hospital_32x32',
@@ -213,7 +218,7 @@ export class TilemapScene extends Phaser.Scene {
       this.player = new Player(
         this,
         this.tilemap.widthInPixels / 2,
-        this.tilemap.heightInPixels,
+        this.tilemap.heightInPixels / 2,
         Assets.Characters.PlayerDress
       );
     }
@@ -229,7 +234,7 @@ export class TilemapScene extends Phaser.Scene {
     let comms = (this.game as CodeJamGame).comms;
 
     comms.of().forEach((message) => {
-      console.log ('recieved message', message, this.name);
+      console.log('recieved message', message, this.name);
       if (message.channel === 'teleport' && message.data.scene === this.name) {
         console.log('teleport handler');
         const target = this.tilemap?.findObject(
@@ -237,9 +242,9 @@ export class TilemapScene extends Phaser.Scene {
           (x) => x.name == message.data.target
         );
         console.log('target');
-        if (target) {
+        if (target && target.x && target.y) {
           console.log('Teleporting to ', target);
-          this.player?.setPosition(target.x, target.y);
+          this.player?.setPosition(target.x, target.y - 16);
         }
       }
     });
@@ -249,6 +254,8 @@ export class TilemapScene extends Phaser.Scene {
     this.physics.collide(this.collideLayer1, this.player);
     this.physics.collide(this.collideLayer2, this.player);
 
+    (this.game as CodeJamGame).teleportCooldown -= delta;
+
     const keyPressed = {
       left: this.leftKey.isDown,
       right: this.rightKey.isDown,
@@ -256,5 +263,22 @@ export class TilemapScene extends Phaser.Scene {
       down: this.downKey.isDown,
     };
     this.player?.updatePlayer(keyPressed);
+  }
+
+  public checkTeleport(
+    zone: Phaser.GameObjects.Zone | undefined,
+    targetScene: string,
+    target: string
+  ) {
+    if (zone && (this.game as CodeJamGame).teleportCooldown <= 0) {
+      this.physics.overlap(zone, this.player, () => {
+        (this.game as CodeJamGame).teleportCooldown = 20;
+        this.scene.switch(targetScene);
+        (this.game as CodeJamGame).comms.publish({
+          channel: 'teleport',
+          data: { scene: targetScene, target: target },
+        });
+      });
+    }
   }
 }
