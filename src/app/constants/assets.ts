@@ -1,7 +1,8 @@
 export const Assets: any = {
     Characters: {
         PlayerTrunks: 'player-trunks',
-        PlayerDress: 'player-dress'
+        PlayerDress: 'player-dress',
+        Mother: 'mother',
     },
     Images: {
 

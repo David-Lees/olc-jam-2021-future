@@ -5,6 +5,7 @@ import { PlayerData } from './player-data';
 import { CommunicationsService } from '../communications.service';
 import { GymScene } from '../scenes/gym';
 import { OverworldScene } from '../scenes/overworld';
+import { HomeScene } from '../scenes/home';
 
 export class CodeJamGame extends Phaser.Game {
   public paused = false;
@@ -29,7 +30,7 @@ export class CodeJamGame extends Phaser.Game {
         keyboard: true,
       },
       disableContextMenu: true,
-      scene: [Preload, HospitalScene, GymScene, OverworldScene],
+      scene: [Preload, HomeScene, HospitalScene, GymScene, OverworldScene],
       plugins: {
         global: [
           {
