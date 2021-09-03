@@ -51,6 +51,7 @@
   ],
   "cSpell.words": [
     "aetiology",
+    "anims",
     "asymmetrik",
     "behavioural",
     "changes",
@@ -74,6 +75,7 @@
     "osgridref",
     "Overworld",
     "recognise",
+    "spritesheet",
     "tinymce"
   ],
   "typescript.tsdk": "node_modules\\typescript\\lib"

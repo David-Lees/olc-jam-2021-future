@@ -4,6 +4,8 @@ import { TilemapScene } from './tilemap-scene';
 import { Conversations } from '../constants/conversations';
 import { Mother } from '../models/mother';
 import { Assets } from '../constants/assets';
+import { Character } from '../models/character';
+import { Info } from '../models/info';
 
 export class HomeScene extends TilemapScene {
   constructor() {
@@ -15,6 +17,7 @@ export class HomeScene extends TilemapScene {
   private upZone?: Phaser.GameObjects.Zone;
   private upDeniedZone?: Phaser.GameObjects.Zone;
   private toiletZone?: Phaser.GameObjects.Zone;
+  private phoneZone?: Phaser.GameObjects.Zone;
 
   private allowDown = false;
   private allowExit = false;  
@@ -35,41 +38,14 @@ export class HomeScene extends TilemapScene {
       }
     });
 
-    const exit = this.tilemap?.findObject('Objects', x => x.name === 'Exit');
-    if (exit && exit.x && exit.y && exit.width && exit.height) {
-      this.exitZone = this.add.zone(exit.x, exit.y, exit.width, exit.height);
-      this.exitZone.setOrigin(0,0);
-      this.physics.add.existing(this.exitZone);
-    }
+    this.exitZone = this.addZone('Exit');
+    this.downZone = this.addZone('Down');
+    this.upZone = this.addZone('Up');
+    this.upDeniedZone = this.addZone('UpDenied');
+    this.toiletZone = this.addZone('Toilet');    
+    this.phoneZone = this.addZone('Phone');
 
-    const downObj = this.tilemap?.findObject('Objects', x => x.name === 'Down');
-    if (downObj && downObj.x && downObj.y && downObj.width && downObj.height) {      
-      this.downZone = this.add.zone(downObj.x, downObj.y, downObj.width, downObj.height);
-      this.downZone.setOrigin(0,0);
-      this.physics.add.existing(this.downZone);      
-    }
-
-    const upObj = this.tilemap?.findObject('Objects', x => x.name === 'Up');
-    if (upObj && upObj.x && upObj.y && upObj.width && upObj.height) {      
-      this.upZone = this.add.zone(upObj.x, upObj.y, upObj.width, upObj.height);
-      this.upZone.setOrigin(0,0);
-      this.physics.add.existing(this.upZone);      
-    }
-
-    const upDeniedObj = this.tilemap?.findObject('Objects', x => x.name === 'UpDenied');
-    if (upDeniedObj && upDeniedObj.x && upDeniedObj.y && upDeniedObj.width && upDeniedObj.height) {      
-      this.upDeniedZone = this.add.zone(upDeniedObj.x, upDeniedObj.y, upDeniedObj.width, upDeniedObj.height);
-      this.upDeniedZone.setOrigin(0,0);
-      this.physics.add.existing(this.upDeniedZone);      
-      
-    }
-
-    const toiletObj = this.tilemap?.findObject('Objects', x => x.name === 'Toilet');
-    if (toiletObj && toiletObj.x && toiletObj.y && toiletObj.width && toiletObj.height) {      
-      this.toiletZone = this.add.zone(toiletObj.x, toiletObj.y, toiletObj.width, toiletObj.height);
-      this.toiletZone.setOrigin(0,0);
-      this.physics.add.existing(this.toiletZone);      
-    }
+    this.spawnPhoneIcon();
   }  
 
   public update(time: number, delta: number): void {
@@ -99,6 +75,7 @@ export class HomeScene extends TilemapScene {
     this.checkUpOverlap();
     this.checkToiletOverlap();
     this.checkMotherOverlap();
+    this.checkPhoneOverlap();
     this.moveMum(delta / 20);
   }
 
@@ -106,6 +83,25 @@ export class HomeScene extends TilemapScene {
   motherRight = false;
   motherDown = false;
   motherChat = false;
+
+  answeredPhone = false;
+  private checkPhoneOverlap() {
+    if (this.phoneZone && !this.answeredPhone) {
+      this.physics.overlap(this.phoneZone, this.player, () => {
+        this.phoneIcon?.destroy();
+        this.answeredPhone = true;
+        this.allowExit = true;
+        this.game.scene.pause(this);
+        (this.game as CodeJamGame).comms.publish({
+          channel: 'chatstart',
+          data: {
+            conversation: Conversations.PhoneFromCeo,
+            resume: 'home',
+          },
+        });
+      });
+    }
+  }
 
   private checkCanGoDownstairsOverlap() {
     if (this.upDeniedZone && !this.allowDown && (this.game as CodeJamGame).teleportCooldown <= 0) {
@@ -205,5 +201,13 @@ export class HomeScene extends TilemapScene {
   private spawnMum() {
     this.mother = new Mother(this, 464, 414, Assets.Characters.Mother); 
     this.mother.play(`${Assets.Characters.Mother}-${Assets.Animations.Idle.Down}`);
+  }
+
+  private phoneIcon?: Character;
+  private spawnPhoneIcon() {
+    const pos = this.tilemap?.findObject('Objects', x => x.name === 'PhoneIcon');
+    if (pos && pos.x && pos.y) {
+      this.phoneIcon = new Info(this, pos.x, pos.y, 'info');
+    }
   }
 }

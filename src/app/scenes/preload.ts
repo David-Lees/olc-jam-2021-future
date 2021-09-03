@@ -11,6 +11,16 @@ export class Preload extends Phaser.Scene {
         this.createAnimations(Assets.Characters[key]);
     }
 
+    this.anims.create({
+      key: 'info',
+      frames: this.anims.generateFrameNumbers('info', {
+        start: 0,
+        end: 3,
+      }),
+      frameRate: 10,
+      repeat: -1,
+    });
+
     this.scene.launch('home');
   }
 
@@ -38,11 +48,11 @@ export class Preload extends Phaser.Scene {
     );
     this.load.image(
       '5_Classroom_and_library_32x32',
-      'assets/tilesets/5_Classroom_and_library_32x3_extruded.png'
+      'assets/tilesets/5_Classroom_and_library_32x32_extruded.png'
     );
     this.load.image(
       '6_Music_and_sport_32x32',
-      'assets/tilesets/6_Music_and_sport_32x32.png'
+      'assets/tilesets/6_Music_and_sport_32x32_extruded.png'
     );
     this.load.image(
       '7_Art_32x32',
@@ -129,6 +139,10 @@ export class Preload extends Phaser.Scene {
     this.load.spritesheet('mother', 'assets/sprites/mother.png', {
       frameWidth: 32,
       frameHeight: 64,
+    });
+    this.load.spritesheet('info', 'assets/sprites/info.png', {
+      frameWidth: 32,
+      frameHeight: 32,
     });
 
     // Sprites

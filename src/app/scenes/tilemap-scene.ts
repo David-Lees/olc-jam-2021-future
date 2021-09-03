@@ -146,4 +146,15 @@ export class TilemapScene extends Phaser.Scene {
       });
     }
   }
+
+  public addZone(name: string): Phaser.GameObjects.Zone | undefined {
+    const obj = this.tilemap?.findObject('Objects', x => x.name === name);
+    if (obj && obj.x && obj.y && obj.width && obj.height) {      
+      const zone = this.add.zone(obj.x, obj.y, obj.width, obj.height);
+      zone.setOrigin(0,0);
+      this.physics.add.existing(zone);      
+      return zone;
+    }
+    return undefined;
+  }
 }
