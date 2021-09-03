@@ -81,13 +81,11 @@ $them: #666600;
 }
 
 .circle-me {
-  border: 5px solid $me;
-  border-radius: 50%;
+  border-bottom: 5px solid $me;
 }
 
 .circle-them {
-  border-radius: 50%;
-  border: 5px solid $them;
+  border-bottom: 5px solid $them;
 }
 
 .glass {

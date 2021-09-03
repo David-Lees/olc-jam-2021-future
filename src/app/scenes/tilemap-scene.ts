@@ -69,11 +69,11 @@ export class TilemapScene extends Phaser.Scene {
     this.tilemap.createLayer('BelowPlayer', tilesets)?.setDepth(2);
     this.collideLayer1 = this.tilemap
       .createLayer('CollideWithPlayer', tilesets)
-      .setCollisionBetween(0, 25497, true)
+      .setCollisionBetween(0, 29053, true)
       .setDepth(10);
     this.collideLayer2 = this.tilemap
       .createLayer('CollideDecor', tilesets)
-      .setCollisionBetween(0, 25497, true)
+      .setCollisionBetween(0, 29053, true)
       .setDepth(10);
     this.tilemap.createLayer('AbovePlayer', tilesets).setDepth(12);
     this.tilemap.createLayer('AboveHigher', tilesets).setDepth(14);
