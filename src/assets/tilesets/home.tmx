@@ -527,7 +527,7 @@
   <object id="14" name="UpSpawn" x="559" y="483">
    <point/>
   </object>
-  <object id="18" name="UpDeniedWalk" x="463" y="442">
+  <object id="18" name="UpDeniedWalk" x="482" y="431">
    <point/>
   </object>
   <object id="19" name="UpDenied" x="522" y="414" width="82" height="39"/>
