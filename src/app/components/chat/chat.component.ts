@@ -1,13 +1,14 @@
 import { Component, Input, OnDestroy, OnInit } from '@angular/core';
 import { AppComponent } from 'src/app/app.component';
-import { DialogTree, TextEntry } from 'src/app/constants/conversations';
+import { CommunicationsService } from 'src/app/communications.service';
+import { Conversations, DialogTree, TextEntry } from 'src/app/constants/conversations';
 import { CodeJamGame } from 'src/app/models/game';
 @Component({
   selector: 'app-chat',
   templateUrl: './chat.component.html',
   styleUrls: ['./chat.component.scss'],
 })
-export class ChatComponent implements OnInit, OnDestroy {  
+export class ChatComponent implements OnInit, OnDestroy {
   @Input() tree: DialogTree = { lines: [] };
   @Input() game: CodeJamGame | undefined;
   @Input() parent: AppComponent | undefined;
@@ -20,14 +21,14 @@ export class ChatComponent implements OnInit, OnDestroy {
   currentLine = 0;
 
   lines: TextEntry[] = [];
-  
+
   private scroller: any;
 
-  constructor() {}
+  constructor(private comms: CommunicationsService) {}
 
   ngOnInit(): void {
     this.next();
-    this.scroller = setInterval(() => {      
+    this.scroller = setInterval(() => {
       const objDiv = document.getElementById('nextBtn');
       objDiv?.scrollIntoView();
     }, 10);
@@ -58,11 +59,7 @@ export class ChatComponent implements OnInit, OnDestroy {
       this.photoLeft = entry.photoLeft || '';
       this.photoRight = entry.photoRight || '';
       if (entry.next) {
-        this.currentLine = this.findWithAttr(
-          this.tree.lines,
-          'label',
-          entry.next
-        );
+        this.currentLine = this.findWithAttr(this.tree.lines, 'label', entry.next);
       } else {
         this.currentLine++;
       }
@@ -70,6 +67,12 @@ export class ChatComponent implements OnInit, OnDestroy {
     if (this.currentLine >= this.tree.lines.length) {
       if (this.parent) this.parent.chatMode = false;
       this.game?.scene.resume(this.resume || '');
+      this.comms.publish({
+        channel: 'chatend',
+        data: {
+          conversation: this.tree,
+        },
+      });
     }
   }
 

@@ -33,149 +33,36 @@ export class TilemapScene extends Phaser.Scene {
   }
 
   public preload(): void {
-    this.load.tilemapTiledJSON(
-      this.tilemapKey,
-      `assets/tilesets/${this.tilemapKey}.json`
-    );
+    this.load.tilemapTiledJSON(this.tilemapKey, `assets/tilesets/${this.tilemapKey}.json`);
   }
 
   public create(data: any): void {
     this.tilemap = this.make.tilemap({ key: this.tilemapKey });
     const tilesets = [
-      this.tilemap.addTilesetImage(
-        '1_Generic_32x32',
-        '1_Generic_32x32',
-        32,
-        32
-      ),
-      this.tilemap.addTilesetImage(
-        '2_LivingRoom_32x32',
-        '2_LivingRoom_32x32',
-        32,
-        32       
-      ),
-      this.tilemap.addTilesetImage(
-        '3_Bathroom_32x32',
-        '3_Bathroom_32x32',
-        32,
-        32
-      ),
-      this.tilemap.addTilesetImage(
-        '4_Bedroom_32x32',
-        '4_Bedroom_32x32',
-        32,
-        32
-      ),
-      this.tilemap.addTilesetImage(
-        '5_Classroom_and_library_32x32',
-        '5_Classroom_and_library_32x32',
-        32,
-        32
-      ),
-      this.tilemap.addTilesetImage(
-        '6_Music_and_sport_32x32',
-        '6_Music_and_sport_32x32',
-        32,
-        32
-      ),
+      this.tilemap.addTilesetImage('1_Generic_32x32', '1_Generic_32x32', 32, 32),
+      this.tilemap.addTilesetImage('2_LivingRoom_32x32', '2_LivingRoom_32x32', 32, 32),
+      this.tilemap.addTilesetImage('3_Bathroom_32x32', '3_Bathroom_32x32', 32, 32),
+      this.tilemap.addTilesetImage('4_Bedroom_32x32', '4_Bedroom_32x32', 32, 32),
+      this.tilemap.addTilesetImage('5_Classroom_and_library_32x32', '5_Classroom_and_library_32x32', 32, 32),
+      this.tilemap.addTilesetImage('6_Music_and_sport_32x32', '6_Music_and_sport_32x32', 32, 32),
       this.tilemap.addTilesetImage('7_Art_32x32', '7_Art_32x32', 32, 32, 0, 0),
       this.tilemap.addTilesetImage('8_Gym_32x32', '8_Gym_32x32', 32, 32, 0, 0),
-      this.tilemap.addTilesetImage(
-        '9_Fishing_32x32',
-        '9_Fishing_32x32',
-        32,
-        32
-      ),
-      this.tilemap.addTilesetImage(
-        '10_Birthday_party_32x32',
-        '10_Birthday_party_32x32',
-        32,
-        32
-      ),
-      this.tilemap.addTilesetImage(
-        '11_Halloween_32x32',
-        '11_Halloween_32x32',
-        32,
-        32
-      ),
-      this.tilemap.addTilesetImage(
-        '12_Kitchen_32x32',
-        '12_Kitchen_32x32',
-        32,
-        32
-      ),
-      this.tilemap.addTilesetImage(
-        '13_Conference_Hall_32x32',
-        '13_Conference_Hall_32x32',
-        32,
-        32
-      ),
-      this.tilemap.addTilesetImage(
-        '14_Basement_32x32',
-        '14_Basement_32x32',
-        32,
-        32
-      ),
-      this.tilemap.addTilesetImage(
-        '15_Christmas_32x32',
-        '15_Christmas_32x32',
-        32,
-        32
-      ),
-      this.tilemap.addTilesetImage(
-        '16_Grocery_store_32x32',
-        '16_Grocery_store_32x32',
-        32,
-        32
-      ),
-      this.tilemap.addTilesetImage(
-        '17_Visibile_Upstairs_System_32x32',
-        '17_Visibile_Upstairs_System_32x32',
-        32,
-        32
-      ),
-      this.tilemap.addTilesetImage(
-        '18_Jail_32x32',
-        '18_Jail_32x32',
-        32,
-        32
-      ),
-      this.tilemap.addTilesetImage(
-        '19_Hospital_32x32',
-        '19_Hospital_32x32',
-        32,
-        32
-      ),
-      this.tilemap.addTilesetImage(
-        '20_Japanese_interiors_32x32',
-        '20_Japanese_interiors_32x32',
-        32,
-        32
-      ),
-      this.tilemap.addTilesetImage(
-        '21_Clothing_Store_32x32',
-        '21_Clothing_Store_32x32',
-        32,
-        32
-      ),
-      this.tilemap.addTilesetImage(
-        'serene_village_32x32',
-        'serene_village_32x32',
-        32,
-        32
-      ),
-      this.tilemap.addTilesetImage(
-        'room_builder_32x32',
-        'room_builder_32x32',
-        32,
-        32
-      ),
-      this.tilemap.addTilesetImage(
-        'modern_office_32x32',
-        'modern_office_32x32',
-        32,
-        32
-      ),
+      this.tilemap.addTilesetImage('9_Fishing_32x32', '9_Fishing_32x32', 32, 32),
+      this.tilemap.addTilesetImage('10_Birthday_party_32x32', '10_Birthday_party_32x32', 32, 32),
+      this.tilemap.addTilesetImage('11_Halloween_32x32', '11_Halloween_32x32', 32, 32),
+      this.tilemap.addTilesetImage('12_Kitchen_32x32', '12_Kitchen_32x32', 32, 32),
+      this.tilemap.addTilesetImage('13_Conference_Hall_32x32', '13_Conference_Hall_32x32', 32, 32),
+      this.tilemap.addTilesetImage('14_Basement_32x32', '14_Basement_32x32', 32, 32),
+      this.tilemap.addTilesetImage('15_Christmas_32x32', '15_Christmas_32x32', 32, 32),
+      this.tilemap.addTilesetImage('16_Grocery_store_32x32', '16_Grocery_store_32x32', 32, 32),
+      this.tilemap.addTilesetImage('17_Visibile_Upstairs_System_32x32', '17_Visibile_Upstairs_System_32x32', 32, 32),
+      this.tilemap.addTilesetImage('18_Jail_32x32', '18_Jail_32x32', 32, 32),
+      this.tilemap.addTilesetImage('19_Hospital_32x32', '19_Hospital_32x32', 32, 32),
+      this.tilemap.addTilesetImage('20_Japanese_interiors_32x32', '20_Japanese_interiors_32x32', 32, 32),
+      this.tilemap.addTilesetImage('21_Clothing_Store_32x32', '21_Clothing_Store_32x32', 32, 32),
+      this.tilemap.addTilesetImage('serene_village_32x32', 'serene_village_32x32', 32, 32),
+      this.tilemap.addTilesetImage('room_builder_32x32', 'room_builder_32x32', 32, 32),
+      this.tilemap.addTilesetImage('modern_office_32x32', 'modern_office_32x32', 32, 32),
     ];
 
     this.tilemap.createLayer('BelowLower', tilesets).setDepth(0);
@@ -203,17 +90,12 @@ export class TilemapScene extends Phaser.Scene {
       faceColor: new Phaser.Display.Color(40, 39, 37, 255),
     });
 
-    const spawn = this.tilemap.findObject(
-      'Objects',
-      (x: any) => x.name == 'Spawn'
-    );
-    if (spawn) {
-      this.player = new Player(
-        this,
-        spawn.x || 0,
-        spawn.y || 0,
-        Assets.Characters.PlayerDress
-      );
+    const start = this.tilemap.findObject('Objects', x => x.name === 'Start');
+    const spawn = this.tilemap.findObject('Objects', x => x.name == 'Spawn');
+    if (start) {
+      this.player = new Player(this, start.x || 0, start.y || 0, Assets.Characters.PlayerTrunks);
+    } else if (spawn) {
+      this.player = new Player(this, spawn.x || 0, spawn.y || 0, Assets.Characters.PlayerDress);
     } else {
       this.player = new Player(
         this,
@@ -224,23 +106,15 @@ export class TilemapScene extends Phaser.Scene {
     }
 
     this.cameras.main.startFollow(this.player);
-    this.physics.world.setBounds(
-      0,
-      0,
-      this.tilemap.widthInPixels,
-      this.tilemap.heightInPixels
-    );
+    this.physics.world.setBounds(0, 0, this.tilemap.widthInPixels, this.tilemap.heightInPixels);
 
     let comms = (this.game as CodeJamGame).comms;
 
-    comms.of().forEach((message) => {
+    comms.of().forEach(message => {
       console.log('recieved message', message, this.name);
       if (message.channel === 'teleport' && message.data.scene === this.name) {
         console.log('teleport handler');
-        const target = this.tilemap?.findObject(
-          'Objects',
-          (x) => x.name == message.data.target
-        );
+        const target = this.tilemap?.findObject('Objects', x => x.name == message.data.target);
         console.log('target');
         if (target && target.x && target.y) {
           console.log('Teleporting to ', target);
@@ -265,11 +139,7 @@ export class TilemapScene extends Phaser.Scene {
     this.player?.updatePlayer(keyPressed);
   }
 
-  public checkTeleport(
-    zone: Phaser.GameObjects.Zone | undefined,
-    targetScene: string,
-    target: string
-  ) {
+  public checkTeleport(zone: Phaser.GameObjects.Zone | undefined, targetScene: string, target: string) {
     if (zone && (this.game as CodeJamGame).teleportCooldown <= 0) {
       this.physics.overlap(zone, this.player, () => {
         (this.game as CodeJamGame).teleportCooldown = 20;
@@ -280,5 +150,5 @@ export class TilemapScene extends Phaser.Scene {
         });
       });
     }
-  }  
+  }
 }

@@ -11,7 +11,7 @@ export class Preload extends Phaser.Scene {
         this.createAnimations(Assets.Characters[key]);
     }
 
-    this.scene.launch('gym');
+    this.scene.launch('home');
   }
 
   protected preload() {
@@ -123,6 +123,10 @@ export class Preload extends Phaser.Scene {
       frameHeight: 64,
     });
     this.load.spritesheet('player-dress', 'assets/sprites/player-dress.png', {
+      frameWidth: 32,
+      frameHeight: 64,
+    });
+    this.load.spritesheet('mother', 'assets/sprites/mother.png', {
       frameWidth: 32,
       frameHeight: 64,
     });

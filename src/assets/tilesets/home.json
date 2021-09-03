@@ -181,6 +181,18 @@
                  "width":0,
                  "x":340,
                  "y":2147
+                }, 
+                {
+                 "height":0,
+                 "id":25,
+                 "name":"Start",
+                 "point":true,
+                 "rotation":0,
+                 "type":"",
+                 "visible":true,
+                 "width":0,
+                 "x":175.333333333333,
+                 "y":752.666666666667
                 }],
          "opacity":1,
          "type":"objectgroup",
@@ -189,7 +201,7 @@
          "y":0
         }],
  "nextlayerid":9,
- "nextobjectid":25,
+ "nextobjectid":26,
  "orientation":"orthogonal",
  "renderorder":"right-down",
  "tiledversion":"1.7.2",
