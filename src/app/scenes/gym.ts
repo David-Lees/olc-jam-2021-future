@@ -18,6 +18,7 @@ export class GymScene extends TilemapScene {
     const exit = this.tilemap?.findObject('Objects', x => x.name === 'Exit');
     if (exit && exit.x && exit.y && exit.width && exit.height) {
       this.exitZone = this.add.zone(exit.x, exit.y, exit.width, exit.height);
+      this.exitZone.setOrigin(0,0);
       this.physics.add.existing(this.exitZone);
     }
 
@@ -25,6 +26,7 @@ export class GymScene extends TilemapScene {
     if (welcomeObj && welcomeObj.x && welcomeObj.y && welcomeObj.width && welcomeObj.height) {
       console.log("Welcome", welcomeObj);
       this.welcomeZone = this.add.zone(welcomeObj.x, welcomeObj.y, welcomeObj.width, welcomeObj.height);
+      this.welcomeZone.setOrigin(0,0);
       this.physics.add.existing(this.welcomeZone);
     }
   }

@@ -43,8 +43,7 @@ export class ChatComponent implements OnInit, OnDestroy {
   next() {
     if (this.currentLine < this.tree.lines.length && this.nextEnabled) {
       const entry = this.tree.lines[this.currentLine];
-      if (entry.me) entry.person = 'Mark';
-      console.log(entry);
+      if (entry.me) entry.person = 'Marcus';      
       this.lines.push(entry);
 
       this.nextEnabled = false;
@@ -65,15 +64,21 @@ export class ChatComponent implements OnInit, OnDestroy {
       }
     }
     if (this.currentLine >= this.tree.lines.length) {
-      if (this.parent) this.parent.chatMode = false;
-      this.game?.scene.resume(this.resume || '');
-      this.comms.publish({
-        channel: 'chatend',
-        data: {
-          conversation: this.tree,
-        },
-      });
+      this.nextEnabled = false;
     }
+  }
+
+  close() {
+    if (this.parent) {
+      this.parent.chatMode = false;
+    }
+    this.game?.scene.resume(this.resume || '');
+    this.comms.publish({
+      channel: 'chatend',
+      data: {
+        conversation: this.tree,
+      },
+    });
   }
 
   findWithAttr(array: Array<any>, attr: string, value: string) {

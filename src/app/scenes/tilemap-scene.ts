@@ -65,8 +65,8 @@ export class TilemapScene extends Phaser.Scene {
       this.tilemap.addTilesetImage('modern_office_32x32', 'modern_office_32x32', 32, 32),
     ];
 
-    this.tilemap.createLayer('BelowLower', tilesets).setDepth(0);
-    this.tilemap.createLayer('BelowPlayer', tilesets).setDepth(2);
+    this.tilemap.createLayer('BelowLower', tilesets)?.setDepth(0);
+    this.tilemap.createLayer('BelowPlayer', tilesets)?.setDepth(2);
     this.collideLayer1 = this.tilemap
       .createLayer('CollideWithPlayer', tilesets)
       .setCollisionBetween(0, 25497, true)

@@ -66,12 +66,23 @@ export const Conversations: { [Key: string]: DialogTree } = {
       },
     ],
   },
+  NoExitHome: {
+    lines: [
+      {
+        text: "I can't go outside dressed like this!",
+        me: true,
+        photoLeft: '/assets/avatars/player/dress/normal.png',
+        photoRight: '',
+        person: '',
+      },
+    ]
+  },
   Toilet: {
     lines: [
       {
         text: "Ahh! Much better!",
         me: true,
-        photoLeft: '/assets/avatars/player/nude/delighted2.png',
+        photoLeft: '/assets/avatars/player/nude/smile3.png',
         photoRight: '',
         person: '',
       },

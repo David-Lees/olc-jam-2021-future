@@ -9,22 +9,22 @@ import { HomeScene } from '../scenes/home';
 
 export class CodeJamGame extends Phaser.Game {
   public paused = false;
-  
+
   public teleportCooldown = -1;
 
-  constructor(public comms: CommunicationsService) {    
+  constructor(public comms: CommunicationsService) {
     super({
       type: Phaser.AUTO,
-      parent: 'game-container',    
+      parent: 'game-container',
       width: document.body.offsetWidth,
       height: window.innerHeight,
       zoom: 1,
       pixelArt: true,
       physics: {
         default: 'arcade',
-        // arcade: {
-        //   debug: true,
-        // },
+        arcade: {
+          debug: true,
+        },
       },
       input: {
         keyboard: true,

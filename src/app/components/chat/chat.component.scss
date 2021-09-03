@@ -94,10 +94,10 @@ $them: #666600;
   height: 90vh;
   width: 30vw;
   margin-top: 3vh;
-  background-color: rgba(255, 255, 255, .15);  
+  background-color: rgba(255, 255, 255, 0.15);
   backdrop-filter: blur(5px);
   border-radius: 20px;
-  border: 5px solid rgba(255, 255, 255, .25);
+  border: 5px solid rgba(255, 255, 255, 0.25);
   filter: drop-shadow(30px 10px 4px #757575);
   padding: 20px;
 }
@@ -108,9 +108,20 @@ $them: #666600;
   text-align: center;
 }
 
-#nextbutton {
-  padding: 1em;
-  font-size: 19px;
-  margin-left: auto;
-  margin-right: auto;
+button {  
+  margin-right: 1em;
+  height: 30px;
+  background: darkblue;
+  border: none;
+  color: white;          
+  font-weight: bold;
+  font-size: 19px;                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                         
+
+  &:disabled {
+    opacity: 0.5;
+  }
+}
+
+.container {
+  padding: 0.5em;
 }
