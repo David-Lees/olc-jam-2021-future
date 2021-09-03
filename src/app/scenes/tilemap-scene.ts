@@ -97,12 +97,7 @@ export class TilemapScene extends Phaser.Scene {
     } else if (spawn) {
       this.player = new Player(this, spawn.x || 0, spawn.y || 0, Assets.Characters.PlayerDress);
     } else {
-      this.player = new Player(
-        this,
-        this.tilemap.widthInPixels / 2,
-        this.tilemap.heightInPixels / 2,
-        Assets.Characters.PlayerDress
-      );
+      this.player = new Player(this, 1327,1936, Assets.Characters.PlayerDress); // HomeExit on Overworld
     }
 
     this.cameras.main.startFollow(this.player);

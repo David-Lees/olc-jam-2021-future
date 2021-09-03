@@ -50,8 +50,6 @@
     "usgs"
   ],
   "cSpell.words": [
-    "Microsite",
-    "Osgb",
     "aetiology",
     "asymmetrik",
     "behavioural",
@@ -65,10 +63,14 @@
     "idaad",
     "jasminewd",
     "latlon",
+    "lockdown",
     "luxon",
     "mdash",
+    "Microsite",
     "oie's",
+    "Osgb",
     "osgridref",
+    "recognise",
     "tinymce"
   ],
   "typescript.tsdk": "node_modules\\typescript\\lib"
