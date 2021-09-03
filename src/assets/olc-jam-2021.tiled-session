@@ -3,7 +3,7 @@
         "height": 4300,
         "width": 2
     },
-    "activeFile": "tilesets/home.tmx",
+    "activeFile": "tilesets/overworld.tmx",
     "expandedProjectPaths": [
         "tilesets"
     ],
@@ -321,11 +321,11 @@
             "scaleInEditor": 1
         },
         "tilesets/overworld.tmx": {
-            "scale": 1.5,
-            "selectedLayer": 1,
+            "scale": 0.75,
+            "selectedLayer": 0,
             "viewCenter": {
-                "x": 2099,
-                "y": 2384
+                "x": 2035.3333333333333,
+                "y": 2798.6666666666665
             }
         },
         "tilesets/overworld.tmx#10_Birthday_party_32x32": {
@@ -401,7 +401,7 @@
             "scaleInDock": 0.5
         },
         "tilesets/overworld.tmx#serene_village_32x32": {
-            "scaleInDock": 1
+            "scaleInDock": 0.75
         },
         "tilesets/template.tmx": {
             "scale": 0.638875,
@@ -493,14 +493,14 @@
     "map.lastUsedFormat": "tmx",
     "openFiles": [
         "tilesets/home.tmx",
-        "tilesets/overworld.tmx",
-        "tilesets/hospital.tmx"
+        "tilesets/hospital.tmx",
+        "tilesets/overworld.tmx"
     ],
     "project": "olc-jam-2021.tiled-project",
     "recentFiles": [
-        "tilesets/overworld.tmx",
-        "tilesets/hospital.tmx",
         "tilesets/home.tmx",
+        "tilesets/hospital.tmx",
+        "tilesets/overworld.tmx",
         "tilesets/gym.tmx",
         "tilesets/template.tmx",
         "tilesets/Hospital.json",
