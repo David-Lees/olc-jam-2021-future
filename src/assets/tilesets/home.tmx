@@ -527,10 +527,10 @@
   <object id="14" name="UpSpawn" x="559" y="483">
    <point/>
   </object>
-  <object id="18" name="UpDeniedWalk" x="464" y="444">
+  <object id="18" name="UpDeniedWalk" x="463" y="442">
    <point/>
   </object>
-  <object id="19" name="UpDenied" x="513" y="414" width="91" height="39"/>
+  <object id="19" name="UpDenied" x="522" y="414" width="82" height="39"/>
   <object id="20" name="Toilet" x="196" y="406" width="24" height="56"/>
   <object id="21" name="Up" x="540" y="1831" width="42" height="71"/>
   <object id="22" name="DownSpawn" x="560" y="2068">
