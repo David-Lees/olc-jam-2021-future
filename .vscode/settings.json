@@ -76,6 +76,10 @@
     "Overworld",
     "recognise",
     "spritesheet",
+    "tilemap",
+    "Tilemaps",
+    "Tileset",
+    "tilesets",
     "tinymce"
   ],
   "typescript.tsdk": "node_modules\\typescript\\lib"

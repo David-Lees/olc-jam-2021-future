@@ -2,6 +2,7 @@ import { CodeJamGame } from '../models/game';
 import { Player } from '../models/player';
 import { TilemapScene } from './tilemap-scene';
 import { Conversations } from '../constants/conversations';
+import { Assets } from '../constants/assets';
 
 export class GymScene extends TilemapScene {
   constructor() {
@@ -14,6 +15,7 @@ export class GymScene extends TilemapScene {
 
   public create(data: any): void {
     super.create(data);
+    this.player?.setTexture(Assets.Characters.PlayerDress);
 
     const exit = this.tilemap?.findObject('Objects', x => x.name === 'Exit');
     if (exit && exit.x && exit.y && exit.width && exit.height) {

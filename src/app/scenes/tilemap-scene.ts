@@ -134,6 +134,18 @@ export class TilemapScene extends Phaser.Scene {
     this.player?.updatePlayer(keyPressed);
   }
 
+  public setDressed() {
+    if (this.player) {
+      this.player.isDressed = true;
+    }
+  }
+
+  public setUndressed(){
+    if (this.player) {
+      this.player.isDressed = false;
+    }
+  }
+
   public checkTeleport(zone: Phaser.GameObjects.Zone | undefined, targetScene: string, target: string) {
     if (zone && (this.game as CodeJamGame).teleportCooldown <= 0) {
       this.physics.overlap(zone, this.player, () => {

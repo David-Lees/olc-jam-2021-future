@@ -25,6 +25,7 @@ export class HomeScene extends TilemapScene {
 
   public create(data: any): void {
     super.create(data);
+    this.setUndressed();
 
     (this.game as CodeJamGame).comms.of().forEach((message) => {
       if (message.channel === 'chatend' && message.data.conversation === Conversations.HelloMum) {        

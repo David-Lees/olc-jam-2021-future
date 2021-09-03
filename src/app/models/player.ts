@@ -18,7 +18,7 @@ export class Player extends Character {
     this.body.setOffset(0, 32);
   }
 
-  public isDressed = false;
+  public isDressed = true;
   private orientation: Orientation = Orientation.Down;
 
   public updatePlayer(keyPressed: any) {

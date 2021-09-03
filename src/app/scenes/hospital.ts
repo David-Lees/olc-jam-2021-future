@@ -1,3 +1,4 @@
+import { Assets } from '../constants/assets';
 import { CodeJamGame } from '../models/game';
 import { Player } from '../models/player';
 import { TilemapScene } from './tilemap-scene';
@@ -10,7 +11,8 @@ export class HospitalScene extends TilemapScene {
   private exitZone?: Phaser.GameObjects.Zone;
 
   public create(data: any): void {
-    super.create(data);
+    super.create(data);    
+    this.player?.setTexture(Assets.Characters.PlayerDress);
     const exit = this.tilemap?.findObject('Objects', x => x.name === 'Exit');
     if (exit && exit.x && exit.y && exit.width && exit.height) {
       this.exitZone = this.add.zone(exit.x, exit.y, exit.width, exit.height);
