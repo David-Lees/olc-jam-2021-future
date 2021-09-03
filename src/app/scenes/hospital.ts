@@ -11,23 +11,12 @@ export class HospitalScene extends TilemapScene {
 
   public create(data: any): void {
     super.create(data);
-    const exit =  this.tilemap?.findObject('Objects', (x) => x.name === 'Exit');
-    if (
-      exit &&
-      exit.x &&
-      exit.y &&
-      exit.width &&
-      exit.height
-    ) {
-      console.log('exit of hospital', exit);
-      this.exitZone = this.add.zone(
-        exit.x,
-        exit.y,
-        exit.width,
-        exit.height
-      );
+    const exit = this.tilemap?.findObject('Objects', x => x.name === 'Exit');
+    if (exit && exit.x && exit.y && exit.width && exit.height) {
+      this.exitZone = this.add.zone(exit.x, exit.y, exit.width, exit.height);
+      this.exitZone.setOrigin(0, 0);
       this.physics.add.existing(this.exitZone);
-    }    
+    }
   }
 
   public update(time: number, delta: number): void {
