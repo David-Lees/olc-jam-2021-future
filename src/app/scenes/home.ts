@@ -69,8 +69,11 @@ export class HomeScene extends TilemapScene {
 
     this.checkTeleport(this.exitZone, 'overworld', 'HomeExit');
 
-    if (this.upDeniedZone && !this.allowDown) {      
-      this.physics.overlap(this.upDeniedZone, this.player, () => {              
+    if (this.upDeniedZone && !this.allowDown && (this.game as CodeJamGame).teleportCooldown <= 0) {      
+      this.physics.overlap(this.upDeniedZone, this.player, () => {     
+        (this.game as CodeJamGame).teleportCooldown = 20;
+        const goto = this.tilemap?.findObject('Objects', x => x.name === 'UpDeniedWalk');
+        if (goto && goto.x && goto.y) this.player?.setPosition(goto.x, goto.y);
         this.game.scene.pause(this);
         (this.game as CodeJamGame).comms.publish({
           channel: 'chatstart',
@@ -79,8 +82,6 @@ export class HomeScene extends TilemapScene {
             resume: 'home',
           },
         });
-        const goto = this.tilemap?.findObject('Objects', x => x.name === 'UpDeniedWalk');
-        if (goto && goto.x && goto.y) this.player?.setPosition(goto.x, goto.y);
       });
     }
 

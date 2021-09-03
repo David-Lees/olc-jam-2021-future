@@ -87,7 +87,7 @@ export const Conversations: { [Key: string]: DialogTree } = {
         person: 'Mother',
       },
       {
-        text: "Are, good you haven't dressed yet. Planning to go off galivanting around town again today?",
+        text: "Are, good you haven't dressed yet. Planning to go off gallivanting around town again today?",
         me: false,
         photoLeft: '/assets/avatars/player/nude/normal.png',
         photoRight: '/assets/avatars/mother/normal.png',
@@ -122,7 +122,7 @@ export const Conversations: { [Key: string]: DialogTree } = {
         person: 'Mother',
       },
       {
-        text: "Look, I'm sorry, but I didn't know that Giraffe would eat Mrs. Watsons hat.",
+        text: "Look, I'm sorry, but I didn't know that Giraffe would eat Mrs. Watson's hat.",
         me: true,
         photoLeft: '/assets/avatars/player/nude/normal.png',
         photoRight: '/assets/avatars/mother/normal.png',
@@ -171,7 +171,7 @@ export const Conversations: { [Key: string]: DialogTree } = {
         person: 'Mother',
       },
       {
-        text: 'Nevermind that. I want to see you dressed before I have to meet Lucy.',
+        text: 'Never mind that. I want to see you dressed before I have to meet Lucy.',
         me: false,
         photoLeft: '/assets/avatars/player/nude/sad.png',
         photoRight: '/assets/avatars/mother/angry.png',
@@ -266,7 +266,7 @@ export const Conversations: { [Key: string]: DialogTree } = {
         person: '??',
       },
       {
-        text: "Is that Markus? It's Geraldine Glover over at Future Fabrications",
+        text: "Is that Marcus? It's Geraldine Glover over at Future Fabrications",
         me: false,
         photoLeft: '/assets/avatars/player/dress/normal.png',
         photoRight: '/assets/avatars/geraldine/normal.png',
@@ -322,7 +322,7 @@ export const Conversations: { [Key: string]: DialogTree } = {
         person: 'Geraldine Glover, CEO Future Fabrications Inc.',
       },
       {
-        text: 'In that case I will be having a serios conversation with the both of them when they return.',
+        text: 'In that case I will be having a serious conversation with the both of them when they return.',
         me: false,
         photoLeft: '/assets/avatars/player/dress/normal.png',
         photoRight: '/assets/avatars/geraldine/angry.png',
@@ -364,7 +364,7 @@ export const Conversations: { [Key: string]: DialogTree } = {
         person: 'Geraldine Glover, CEO Future Fabrications Inc.',
       },
       {
-        text: "I'm an ametuer lock-picker. I may even do it as a future career if I don't can't go to university.",
+        text: "I'm an amateur lock-picker. I may even do it as a future career if I don't can't go to university.",
         me: true,
         photoLeft: '/assets/avatars/player/dress/laugh.png',
         photoRight: '/assets/avatars/geraldine/shocked.png',
@@ -448,7 +448,7 @@ export const Conversations: { [Key: string]: DialogTree } = {
         person: 'Gloria',
       },
       {
-        text: "Markus! Wow, I almost didn't recognise you.",
+        text: "Marcus! Wow, I almost didn't recognise you.",
         me: false,
         photoLeft: '/assets/avatars/player/dress/smile1.png',
         photoRight: '/assets/avatars/gloria/shocked.png',
@@ -476,7 +476,7 @@ export const Conversations: { [Key: string]: DialogTree } = {
         person: 'Gloria',
       },
       {
-        text: 'I can see how that could cause trouble, espescially if you used the ladies.',
+        text: 'I can see how that could cause trouble, especially if you used the ladies.',
         me: false,
         photoLeft: '/assets/avatars/player/dress/smirk.png',
         photoRight: '/assets/avatars/gloria/laugh.png',

@@ -80,5 +80,6 @@ export class OverworldScene extends TilemapScene {
         
     this.checkTeleport(this.hospital, 'hospital', 'Spawn');
     this.checkTeleport(this.gym, 'gym', 'Spawn');
+    this.checkTeleport(this.home, 'home', 'Spawn');
   }
 }
