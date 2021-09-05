@@ -63,6 +63,7 @@
     "cystoskeleton",
     "cytoskeleton",
     "devkit",
+    "Durka",
     "idaad",
     "jasminewd",
     "latlon",
@@ -76,11 +77,14 @@
     "Overworld",
     "recognise",
     "spritesheet",
+    "Thugish",
     "tilemap",
     "Tilemaps",
     "Tileset",
     "tilesets",
-    "tinymce"
+    "tinymce",
+    "Tranny",
+    "Trish"
   ],
   "typescript.tsdk": "node_modules\\typescript\\lib"
 }

@@ -1,0 +1,5 @@
+<span *ngIf="game && (game.mushrooms > 0 || game.coils > 0 || game.explosives > 0)" class="inventory">
+    <span *ngIf="game.mushrooms > 0">{{game.mushrooms}} x <img src="assets/sprites/mushroom.png" alt="mushroom"></span>
+    <span *ngIf="game.coils > 0">{{game.coils}} x <img src="assets/sprites/coil.png" alt="mushroom"></span>
+    <span *ngIf="game.explosives > 0">{{game.explosives}} x <img src="assets/sprites/tnt.png" alt="mushroom"></span>
+</span>

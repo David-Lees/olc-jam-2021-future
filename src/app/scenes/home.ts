@@ -20,22 +20,22 @@ export class HomeScene extends TilemapScene {
   private phoneZone?: Phaser.GameObjects.Zone;
 
   private allowDown = false;
-  private allowExit = false;  
+  private allowExit = false;
   private usedToilet = false;
 
   public create(data: any): void {
     super.create(data);
     this.setUndressed();
 
-    (this.game as CodeJamGame).comms.of().forEach((message) => {
-      if (message.channel === 'chatend' && message.data.conversation === Conversations.HelloMum) {        
+    (this.game as CodeJamGame).comms.of().forEach(message => {
+      if (message.channel === 'chatend' && message.data.conversation === Conversations.HelloMum) {
         if (this.player) {
           this.player.setTexture(Assets.Characters.PlayerDress);
           this.player.isDressed = true;
         }
         this.motherChat = true;
         this.motherRight = true;
-        this.mother?.play(`${Assets.Characters.Mother}-${Assets.Animations.Move.Right}`)
+        this.mother?.play(`${Assets.Characters.Mother}-${Assets.Animations.Move.Right}`);
       }
     });
 
@@ -43,31 +43,34 @@ export class HomeScene extends TilemapScene {
     this.downZone = this.addZone('Down');
     this.upZone = this.addZone('Up');
     this.upDeniedZone = this.addZone('UpDenied');
-    this.toiletZone = this.addZone('Toilet');    
+    this.toiletZone = this.addZone('Toilet');
     this.phoneZone = this.addZone('Phone');
 
     this.spawnPhoneIcon();
-  }  
+
+    //this.game.sound.play('mood', { loop: true });
+    this.sound.add('mood').play({loop: true });
+  }
 
   public update(time: number, delta: number): void {
     super.update(time, delta);
     super.player?.update();
-  
+
     if (this.allowExit) {
       this.checkTeleport(this.exitZone, 'overworld', 'HomeExit');
     } else {
       if (this.exitZone) {
-        this.physics.overlap(this.exitZone, this.player, () => {          
-        const goto = this.tilemap?.findObject('Objects', x => x.name === 'Spawn');
-        if (goto && goto.x && goto.y) this.player?.setPosition(goto.x, goto.y - 16);
-        (this.game as CodeJamGame).comms.publish({
-          channel: 'chatstart',
-          data: {
-            conversation: Conversations.NoExitHome,
-            resume: 'home',
-          },
+        this.physics.overlap(this.exitZone, this.player, () => {
+          const goto = this.tilemap?.findObject('Objects', x => x.name === 'Spawn');
+          if (goto && goto.x && goto.y) this.player?.setPosition(goto.x, goto.y - 16);
+          (this.game as CodeJamGame).comms.publish({
+            channel: 'chatstart',
+            data: {
+              conversation: Conversations.NoExitHome,
+              resume: 'home',
+            },
+          });
         });
-        })
       }
     }
 
@@ -109,8 +112,7 @@ export class HomeScene extends TilemapScene {
       this.physics.overlap(this.upDeniedZone, this.player, () => {
         (this.game as CodeJamGame).teleportCooldown = 20;
         const goto = this.tilemap?.findObject('Objects', x => x.name === 'UpDeniedWalk');
-        if (goto && goto.x && goto.y)
-          this.player?.setPosition(goto.x, goto.y);
+        if (goto && goto.x && goto.y) this.player?.setPosition(goto.x, goto.y);
         this.game.scene.pause(this);
         (this.game as CodeJamGame).comms.publish({
           channel: 'chatstart',
@@ -127,8 +129,7 @@ export class HomeScene extends TilemapScene {
     if (this.downZone && this.allowDown) {
       this.physics.overlap(this.downZone, this.player, () => {
         const goto = this.tilemap?.findObject('Objects', x => x.name === 'DownSpawn');
-        if (goto && goto.x && goto.y)
-          this.player?.setPosition(goto.x, goto.y);
+        if (goto && goto.x && goto.y) this.player?.setPosition(goto.x, goto.y);
       });
     }
   }
@@ -137,8 +138,7 @@ export class HomeScene extends TilemapScene {
     if (this.upZone) {
       this.physics.overlap(this.upZone, this.player, () => {
         const goto = this.tilemap?.findObject('Objects', x => x.name === 'UpSpawn');
-        if (goto && goto.x && goto.y)
-          this.player?.setPosition(goto.x, goto.y);
+        if (goto && goto.x && goto.y) this.player?.setPosition(goto.x, goto.y);
       });
     }
   }
@@ -147,7 +147,7 @@ export class HomeScene extends TilemapScene {
     if (this.mother && !this.motherChat) {
       this.physics.overlap(this.mother, this.player, () => {
         this.game.scene.pause(this);
-        this.motherChat = true;        
+        this.motherChat = true;
         (this.game as CodeJamGame).comms.publish({
           channel: 'chatstart',
           data: {
@@ -200,7 +200,7 @@ export class HomeScene extends TilemapScene {
   }
 
   private spawnMum() {
-    this.mother = new Mother(this, 464, 414, Assets.Characters.Mother); 
+    this.mother = new Mother(this, 464, 414, Assets.Characters.Mother);
     this.mother.play(`${Assets.Characters.Mother}-${Assets.Animations.Idle.Down}`);
   }
 

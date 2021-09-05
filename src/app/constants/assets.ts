@@ -3,6 +3,8 @@ export const Assets: any = {
         PlayerTrunks: 'player-trunks',
         PlayerDress: 'player-dress',
         Mother: 'mother',
+        Ted: 'ted',
+        Thug: 'thug',
     },
     Images: {
 

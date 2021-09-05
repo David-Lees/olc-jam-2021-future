@@ -1,10 +1,7 @@
-import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
-import {
-  Attacks,
-  Defences,
-  DummyAttack,
-  Wildcards,
-} from 'src/app/constants/attacks';
+import { Component, Input, OnInit } from '@angular/core';
+import { AppComponent } from 'src/app/app.component';
+import { CommunicationsService } from 'src/app/communications.service';
+import { Attacks, Defences, DummyAttack, Wildcards } from 'src/app/constants/attacks';
 import { BattleOption, BattleResult } from 'src/app/models/battle';
 
 @Component({
@@ -14,11 +11,13 @@ import { BattleOption, BattleResult } from 'src/app/models/battle';
 })
 export class BattleComponent implements OnInit {
   @Input() visible = false;
-  @Output() won = new EventEmitter<boolean>();
+
+  @Input() parent: AppComponent | undefined;
+  @Input() enemyName: string | undefined = '';
+  @Input() them: string | undefined = '';
+  @Input() resume: string | undefined;
 
   me = '/assets/avatars/player/dress/normal.png';
-  them = '/assets/avatars/mother/angry.png';
-  enemyName = 'They';
 
   card1?: BattleOption | null;
   card2?: BattleOption | null;
@@ -36,15 +35,19 @@ export class BattleComponent implements OnInit {
   playerStamina = 100;
   enemyHealth = 100;
   enemyStamina = 100;
+  over = true;
+  won?: boolean | null = null;
+  endEnabled = false;
 
-  constructor() {}
+  constructor(private comms: CommunicationsService) {}
 
   ngOnInit(): void {
     this.pickCards();
-    setTimeout(() => {
-      const objDiv = document.getElementById('nextBtn');
-      objDiv?.scrollIntoView();
-    }, 10);
+    setInterval(() => {
+      document.getElementById('scoll-target')?.scrollIntoView();
+    }, 100);
+    this.parent?.game?.sound.stopAll();
+    this.parent?.game?.sound.add('fight').play({loop: true});
   }
 
   pickCards() {
@@ -89,23 +92,23 @@ export class BattleComponent implements OnInit {
     const enemyHit = Math.random() <= enemyCard.hitChance;
 
     // decide who goes first
-    if (card.speed >= enemyCard!.speed) {
-      this.doPlayerAttack(card, enemyCard!, playerHit, enemyHit);
+    if (card.speed >= enemyCard.speed) {
+      this.doPlayerAttack(card, enemyCard, playerHit, enemyHit);
       pick = pick && !this.checkIfWon();
       pick = pick && !this.checkIfLost();
-      this.doEnemyAttack(card, enemyCard!, playerHit, enemyHit);
+      this.doEnemyAttack(card, enemyCard, playerHit, enemyHit);
       pick = pick && !this.checkIfLost();
       pick = pick && !this.checkIfWon();
     } else {
-      this.doEnemyAttack(card, enemyCard!, playerHit, enemyHit);
+      this.doEnemyAttack(card, enemyCard, playerHit, enemyHit);
       pick = pick && !this.checkIfLost();
       pick = pick && !this.checkIfWon();
-      this.doPlayerAttack(card, enemyCard!, playerHit, enemyHit);
+      this.doPlayerAttack(card, enemyCard, playerHit, enemyHit);
       pick = pick && !this.checkIfWon();
       pick = pick && !this.checkIfLost();
     }
 
-    // Stamina restore. 
+    // Stamina restore.
     // Allow enemy to recover faster as they don't pay attention to stamina
     this.enemyStamina = this.restrain(this.enemyStamina + 5);
     this.playerStamina = this.restrain(this.playerStamina + 2.5);
@@ -126,7 +129,15 @@ export class BattleComponent implements OnInit {
 
   checkIfWon() {
     if (this.enemyHealth <= 0) {
-      this.won.emit(true);
+      this.won = true;
+      this.endEnabled = true;
+      this.comms.publish({
+        channel: 'battleend',
+        data: {
+          enemyName: this.enemyName,
+          won: true,
+        },
+      });
       return true;
     }
     return false;
@@ -134,18 +145,29 @@ export class BattleComponent implements OnInit {
 
   checkIfLost() {
     if (this.playerHealth <= 0) {
-      this.won.emit(false);
+      this.won = false;
+      this.endEnabled = true;
+
       return true;
     }
     return false;
   }
 
-  doPlayerAttack(
-    card: BattleOption,
-    enemyCard: BattleOption,
-    playerHit: boolean,
-    enemyHit: boolean
-  ) {
+  close() {
+    if (this.parent) {
+      this.parent.battleMode = false;
+      this.parent.game?.scene.resume(this.resume || '');
+    }
+    this.comms.publish({
+      channel: 'battleend',
+      data: {
+        enemyName: this.enemyName,
+        won: this.won,
+      },
+    });
+  }
+
+  doPlayerAttack(card: BattleOption, enemyCard: BattleOption, playerHit: boolean, enemyHit: boolean) {
     if (this.playerStamina + card.stamina < 0) {
       this.messages.push(`You tried to ${card.name} but were too exhuasted`);
       return;
@@ -163,35 +185,24 @@ export class BattleComponent implements OnInit {
     this.playerStamina = this.restrain(this.playerStamina);
     this.enemyStamina = this.restrain(this.enemyStamina);
 
-    this.messages.push(
-      `You tried to ${card.name} and ${playerHit ? 'suceeded' : 'failed'}`
-    );
+    this.messages.push(`You tried to ${card.name} and ${playerHit ? 'suceeded' : 'failed'}`);
     if (damage.defenderHealth !== 0) {
       this.messages.push(
-        `${this.enemyName} ${
-          damage.defenderHealth > 0 ? 'gained' : 'lost'
-        } ${Math.abs(damage.defenderHealth).toFixed(0)} health`
+        `${this.enemyName} ${damage.defenderHealth > 0 ? 'gained' : 'lost'} ${Math.abs(damage.defenderHealth).toFixed(
+          0
+        )} health`
       );
     }
     if (damage.attackerHealth !== 0) {
       this.messages.push(
-        `You ${damage.attackerHealth > 0 ? 'gained' : 'lost'} ${Math.abs(
-          damage.attackerHealth
-        ).toFixed(0)} health`
+        `You ${damage.attackerHealth > 0 ? 'gained' : 'lost'} ${Math.abs(damage.attackerHealth).toFixed(0)} health`
       );
     }
   }
 
-  doEnemyAttack(
-    card: BattleOption,
-    enemyCard: BattleOption,
-    playerHit: boolean,
-    enemyHit: boolean
-  ) {
+  doEnemyAttack(card: BattleOption, enemyCard: BattleOption, playerHit: boolean, enemyHit: boolean) {
     if (this.enemyStamina + enemyCard.stamina < 0) {
-      this.messages.push(
-        `${this.enemyName} tried to ${enemyCard.name} but were to exhuasted`
-      );
+      this.messages.push(`${this.enemyName} tried to ${enemyCard.name} but were to exhuasted`);
       return;
     }
     var damage = this.calcDamage(enemyCard, card, enemyHit, playerHit);
@@ -207,23 +218,17 @@ export class BattleComponent implements OnInit {
     this.playerStamina = this.restrain(this.playerStamina);
     this.enemyStamina = this.restrain(this.enemyStamina);
 
-    this.messages.push(
-      `${this.enemyName} tried to ${enemyCard.name} and ${
-        enemyHit ? 'suceeded' : 'failed'
-      }`
-    );
+    this.messages.push(`${this.enemyName} tried to ${enemyCard.name} and ${enemyHit ? 'suceeded' : 'failed'}`);
     if (damage.attackerHealth !== 0) {
       this.messages.push(
-        `${this.enemyName} ${
-          damage.attackerHealth > 0 ? 'gained' : 'lost'
-        } ${Math.abs(damage.attackerHealth).toFixed(0)} health`
+        `${this.enemyName} ${damage.attackerHealth > 0 ? 'gained' : 'lost'} ${Math.abs(damage.attackerHealth).toFixed(
+          0
+        )} health`
       );
     }
     if (damage.defenderHealth !== 0) {
       this.messages.push(
-        `You ${damage.defenderHealth > 0 ? 'gained' : 'lost'} ${Math.abs(
-          damage.defenderHealth
-        ).toFixed(0)} health`
+        `You ${damage.defenderHealth > 0 ? 'gained' : 'lost'} ${Math.abs(damage.defenderHealth).toFixed(0)} health`
       );
     }
   }
@@ -269,8 +274,7 @@ export class BattleComponent implements OnInit {
       // apply hp to opponent
       if (defended) {
         defenderHealth -= attack * (1 - defence);
-      }
-      else {
+      } else {
         defenderHealth -= attack;
       }
     }

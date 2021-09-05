@@ -19,6 +19,9 @@ export class ChatComponent implements OnInit, OnDestroy {
   nextLabel = 'Next';
   nextEnabled = true;
   currentLine = 0;
+  battle = false;
+  battleName: string = '';
+  battleImage: string | undefined = '';
 
   lines: TextEntry[] = [];
 
@@ -46,6 +49,12 @@ export class ChatComponent implements OnInit, OnDestroy {
       if (entry.me) entry.person = 'Marcus';      
       this.lines.push(entry);
 
+      if(entry.battle) {
+        this.battle = true;
+        this.battleName = entry.battle;
+        this.battleImage = entry.battleAvatar;
+      }
+
       this.nextEnabled = false;
       for (let i = 0; i <= entry.text.length; i++) {
         setTimeout(() => {
@@ -69,6 +78,15 @@ export class ChatComponent implements OnInit, OnDestroy {
   }
 
   close() {
+    if (this.battle && this.parent) {
+      this.parent.enemyName = this.battleName;
+      this.parent.avatar = this.battleImage;
+      this.parent.chatMode = false;
+      this.parent.battleMode = true;
+      this.parent.resume = this.resume || '';
+      return;
+    }
+
     if (this.parent) {
       this.parent.chatMode = false;
     }

@@ -1,6 +1,19 @@
 <ng-container *ngIf="chatMode">
   <app-chat [tree]="conversation" [game]="game" [parent]="this" [resume]="resume"></app-chat>
 </ng-container>
-<app-battle [visible]="battleMode"></app-battle>
+<ng-container *ngIf="battleMode">
+  <app-battle
+    [visible]="battleMode"
+    [enemyName]="enemyName"
+    [them]="avatar"
+    [parent]="this"
+    [resume]="resume"
+  ></app-battle>
+</ng-container>
+<app-inventory [game]="game"></app-inventory>
 <div id="game-container"></div>
-<div *ngIf="!game"><button (click)="start()">Load Game</button></div>
+<div *ngIf="!game" class="load">
+  <h1>The Adventures of Marcus</h1>
+  <h2>OLC Code Jam 2021 - Future</h2>
+  <button (click)="start()">Start Game</button>
+</div>

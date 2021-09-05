@@ -28,7 +28,7 @@
         {{ m }}
       </p>
       <div id="scoll-target">
-        
+        <button *ngIf="endEnabled" (click)="close()">Continue</button>
       </div>
     </div>
   </div>

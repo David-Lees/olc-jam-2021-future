@@ -126,6 +126,10 @@ export class Preload extends Phaser.Scene {
       'modern_office_32x32',
       'assets/tilesets/modern_office_32x32_extruded.png'
     );
+    this.load.image('tank', 'assets/sprites/tank.png');
+    this.load.image('coil', 'assets/sprites/coil.png');
+    this.load.image('mushroom', 'assets/sprites/mushroom.png');
+    this.load.image('tnt','assets/sprites/tnt.png');
 
     // Spritesheets
     this.load.spritesheet('player-trunks', 'assets/sprites/player-trunks.png', {
@@ -140,12 +144,25 @@ export class Preload extends Phaser.Scene {
       frameWidth: 32,
       frameHeight: 64,
     });
+    this.load.spritesheet('ted', 'assets/sprites/ted.png', {
+      frameWidth: 32,
+      frameHeight: 64,
+    });
+    this.load.spritesheet('thug', 'assets/sprites/thug.png', {
+      frameWidth: 32,
+      frameHeight: 64,
+    });
     this.load.spritesheet('info', 'assets/sprites/info.png', {
       frameWidth: 32,
       frameHeight: 32,
     });
 
     // Sprites
+
+    // Sounds
+    this.load.audio('mood', 'assets/music/mood.mp3');
+    this.load.audio('march', 'assets/music/march.mp3');
+    this.load.audio('fight', 'assets/music/valkeries.mp3');
   }
 
   private createAnimations(name: string) {
@@ -227,6 +244,5 @@ export class Preload extends Phaser.Scene {
 
   private i(x: number, y: number): number {
     return (y * 56) + x;
-
   }
 }

@@ -14,6 +14,9 @@ export class AppComponent {
   battleMode = false;
   chatMode = false;
 
+  public enemyName: string | undefined;
+  public avatar: string | undefined;
+
   public conversation: DialogTree = Conversations.Dummy;
   public resume: string = '';
 
@@ -22,15 +25,17 @@ export class AppComponent {
 
   start() {
     this.game = new CodeJamGame(this.comms);
-    //this.battleMode = true;
-
+    
     this.comms.of().forEach((message) => {
-      console.log('recieved message on app-component', message);
       if (message.channel === 'chatstart') {
-        console.log('chat handler');
         this.conversation = message.data.conversation;
         this.resume = message.data.resume;
         this.chatMode = true;
+      }
+      if (message.channel === 'battlestart') {
+        this.enemyName = message.data.enemyName;
+        this.avatar = message.data.avatar;
+        this.battleMode = true;
       }
     });
   }

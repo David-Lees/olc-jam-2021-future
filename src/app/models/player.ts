@@ -11,8 +11,8 @@ export class Player extends Character {
 
     scene.physics.add.existing(this);
 
-    this.setCollideWorldBounds(true);
     this.setDepth(10);
+    this.setCollideWorldBounds(true);
 
     this.body.setSize(32, 32, true);
     this.body.setOffset(0, 32);

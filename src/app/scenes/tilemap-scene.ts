@@ -22,8 +22,8 @@ export class TilemapScene extends Phaser.Scene {
   private leftKey!: Phaser.Input.Keyboard.Key;
   private rightKey!: Phaser.Input.Keyboard.Key;
 
-  private collideLayer1!: Phaser.Tilemaps.TilemapLayer;
-  private collideLayer2!: Phaser.Tilemaps.TilemapLayer;
+  public collideLayer1!: Phaser.Tilemaps.TilemapLayer;
+  public collideLayer2!: Phaser.Tilemaps.TilemapLayer;
 
   public init(data: any): void {
     this.upKey = this.input.keyboard.addKey('W');
@@ -55,7 +55,14 @@ export class TilemapScene extends Phaser.Scene {
       this.tilemap.addTilesetImage('14_Basement_32x32', '14_Basement_32x32', 32, 32, 1, 2),
       this.tilemap.addTilesetImage('15_Christmas_32x32', '15_Christmas_32x32', 32, 32, 1, 2),
       this.tilemap.addTilesetImage('16_Grocery_store_32x32', '16_Grocery_store_32x32', 32, 32, 1, 2),
-      this.tilemap.addTilesetImage('17_Visibile_Upstairs_System_32x32', '17_Visibile_Upstairs_System_32x32', 32, 32, 1, 2),
+      this.tilemap.addTilesetImage(
+        '17_Visibile_Upstairs_System_32x32',
+        '17_Visibile_Upstairs_System_32x32',
+        32,
+        32,
+        1,
+        2
+      ),
       this.tilemap.addTilesetImage('18_Jail_32x32', '18_Jail_32x32', 32, 32, 1, 2),
       this.tilemap.addTilesetImage('19_Hospital_32x32', '19_Hospital_32x32', 32, 32, 1, 2),
       this.tilemap.addTilesetImage('20_Japanese_interiors_32x32', '20_Japanese_interiors_32x32', 32, 32, 1, 2),
@@ -79,16 +86,16 @@ export class TilemapScene extends Phaser.Scene {
     this.tilemap.createLayer('AboveHigher', tilesets).setDepth(14);
 
     const debugGraphics = this.add.graphics().setAlpha(0.75);
-    this.collideLayer1.renderDebug(debugGraphics, {
-      tileColor: null,
-      collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255),
-      faceColor: new Phaser.Display.Color(40, 39, 37, 255),
-    });
-    this.collideLayer2.renderDebug(debugGraphics, {
-      tileColor: null,
-      collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255),
-      faceColor: new Phaser.Display.Color(40, 39, 37, 255),
-    });
+    // this.collideLayer1.renderDebug(debugGraphics, {
+    //   tileColor: null,
+    //   collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255),
+    //   faceColor: new Phaser.Display.Color(40, 39, 37, 255),
+    // });
+    // this.collideLayer2.renderDebug(debugGraphics, {
+    //   tileColor: null,
+    //   collidingTileColor: new Phaser.Display.Color(243, 134, 48, 255),
+    //   faceColor: new Phaser.Display.Color(40, 39, 37, 255),
+    // });
 
     const start = this.tilemap.findObject('Objects', x => x.name === 'Start');
     const spawn = this.tilemap.findObject('Objects', x => x.name == 'Spawn');
@@ -97,7 +104,7 @@ export class TilemapScene extends Phaser.Scene {
     } else if (spawn) {
       this.player = new Player(this, spawn.x || 0, spawn.y || 0, Assets.Characters.PlayerDress);
     } else {
-      this.player = new Player(this, 1327,1936, Assets.Characters.PlayerDress); // HomeExit on Overworld
+      this.player = new Player(this, 1327, 1936, Assets.Characters.PlayerDress); // HomeExit on Overworld
     }
 
     this.cameras.main.startFollow(this.player);
@@ -106,13 +113,9 @@ export class TilemapScene extends Phaser.Scene {
     let comms = (this.game as CodeJamGame).comms;
 
     comms.of().forEach(message => {
-      console.log('recieved message', message, this.name);
       if (message.channel === 'teleport' && message.data.scene === this.name) {
-        console.log('teleport handler');
         const target = this.tilemap?.findObject('Objects', x => x.name == message.data.target);
-        console.log('target');
         if (target && target.x && target.y) {
-          console.log('Teleporting to ', target);
           this.player?.setPosition(target.x, target.y - 16);
         }
       }
@@ -140,7 +143,7 @@ export class TilemapScene extends Phaser.Scene {
     }
   }
 
-  public setUndressed(){
+  public setUndressed() {
     if (this.player) {
       this.player.isDressed = false;
     }
@@ -150,6 +153,15 @@ export class TilemapScene extends Phaser.Scene {
     if (zone && (this.game as CodeJamGame).teleportCooldown <= 0) {
       this.physics.overlap(zone, this.player, () => {
         (this.game as CodeJamGame).teleportCooldown = 20;
+        this.game.sound.stopAll();
+        switch (targetScene) {
+          case "home": this.game.sound.play('mood', { loop: true }); break;
+          case "overworld": this.game.sound.play('march', { loop: true }); break;
+          case "gym": this.game.sound.play('fight', { loop: true }); break;
+          case "hospital": this.game.sound.play('mood', { loop: true }); break;
+          case "quarry": this.game.sound.play('mood', { loop: true }); break;
+          case "factory": this.game.sound.play('mood', { loop: true }); break;
+        }
         this.scene.switch(targetScene);
         (this.game as CodeJamGame).comms.publish({
           channel: 'teleport',
@@ -161,10 +173,10 @@ export class TilemapScene extends Phaser.Scene {
 
   public addZone(name: string): Phaser.GameObjects.Zone | undefined {
     const obj = this.tilemap?.findObject('Objects', x => x.name === name);
-    if (obj && obj.x && obj.y && obj.width && obj.height) {      
+    if (obj && obj.x && obj.y && obj.width && obj.height) {
       const zone = this.add.zone(obj.x, obj.y, obj.width, obj.height);
-      zone.setOrigin(0,0);
-      this.physics.add.existing(zone);      
+      zone.setOrigin(0, 0);
+      this.physics.add.existing(zone);
       return zone;
     }
     return undefined;
